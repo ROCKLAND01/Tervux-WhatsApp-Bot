@@ -1,0 +1,11 @@
+{
+    "ignore": [
+        "sessions/**",
+        ".git",
+        "node_modules"
+    ],
+    "watch": [
+        "."
+    ],
+    "ext": "js,json"
+}

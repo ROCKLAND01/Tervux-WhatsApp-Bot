@@ -1,0 +1,30 @@
+{
+  "name": "tervux-whatsapp-bot",
+  "version": "2.0.0",
+  "description": "Self-hosted WhatsApp Bot powered by Tervux",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --expose-gc server.js",
+    "start": "node --expose-gc --max-old-space-size=460 server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "Tervux Company",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "baileys": "^7.0.0-rc.9",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "socket.io": "^4.8.3",
+    "yt-search": "^2.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11",
+    "qrcode-terminal": "^0.12.0"
+  }
+}

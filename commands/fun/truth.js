@@ -1,0 +1,17 @@
+export const truth = async (sock, m, args) => {
+    const truths = [
+        "Who is your secret crush in this group?",
+        "What is the most illegal thing you have ever done?",
+        "Have you ever cheated on a school test?",
+        "What is your biggest fear?",
+        "If you could date anyone here, who would it be?",
+        "What is the last thing you searched on your browser?",
+        "Have you ever lied to your best friend?",
+        "What is your most annoying habit?",
+        "Who do you dislike the most in this group?",
+        "Have you ever cried while watching a movie?"
+    ];
+
+    const randomTruth = truths[Math.floor(Math.random() * truths.length)];
+    return `😇 *BE HONEST...* 😇\n\n*TRUTH:* ${randomTruth}`;
+};
