@@ -1,12 +1,12 @@
 <div align="center">
 
-  <img src="./assets/tervux-logo.png" alt="Tervux Bot Logo" width="200" height="200" style="border-radius: 50%;">
+  <img src="./public/tervus-logo.png" alt="Tervux Bot Logo" width="200" height="200" style="border-radius: 50%; box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);">
 
   # 🤖 Tervux WhatsApp Bot
 
   <!-- Typing SVG Animation -->
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=25&pause=1000&color=25D366&center=true&vCenter=true&width=435&lines=The+Best+WhatsApp+Bot;Simple.+Powerful.+Free.;Deploy+on+Heroku+%7C+Railway+%7C+Render;Supports+Multi-Device+Login;Made+by+Tervux+Team+%F0%9F%9A%80" alt="Typing Animation" />
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=25&pause=1000&color=25D366&center=true&vCenter=true&width=435&lines=The+Best+WhatsApp+Bot;Simple.+Powerful.+Free.;Deploy+on+Railway+%7C+Render;Supports+Multi-Device+Login;Made+by+Tervux+Team+%F0%9F%9A%80" alt="Typing Animation" />
   </a>
 
   <p align="center">
@@ -44,7 +44,14 @@
 
 It is built on **Node.js** using the powerful **Baileys** library, ensuring stability and speed. Best of all, it's completely free to self-host!
 
-## � Features
+<br>
+<div align="center">
+  <img src="./public/welcome-message.jpeg" alt="Welcome Message" width="80%" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+  <p><i>The bot's friendly welcome message!</i></p>
+</div>
+<br>
+
+## 🚀 Features
 
 | Feature | Description | Icon |
 | :--- | :--- | :---: |
@@ -55,6 +62,24 @@ It is built on **Node.js** using the powerful **Baileys** library, ensuring stab
 | **Always Online** | Keeps your presence online 24/7 (configurable). | 🟢 |
 | **Fancy Fonts** | All responses use premium Unicode fonts for a unique look. | 🎨 |
 
+<br>
+<div align="center">
+  <h3>📸 Screenshots</h3>
+  <table>
+    <tr>
+      <td align="center">
+        <img src="./public/help-menu-start.jpeg" alt="Help Menu Start" width="300" style="border-radius: 10px;">
+        <br><b>Help Menu Header</b>
+      </td>
+      <td align="center">
+        <img src="./public/help-menu-end.jpeg" alt="Help Menu End" width="300" style="border-radius: 10px;">
+        <br><b>Help Menu Footer</b>
+      </td>
+    </tr>
+  </table>
+</div>
+<br>
+
 ---
 
 ## 🛠️ Requirements
@@ -62,7 +87,7 @@ It is built on **Node.js** using the powerful **Baileys** library, ensuring stab
 Before you start, make sure you have:
 1.  **A GitHub Account** (to fork the repo).
 2.  **WhatsApp App** on your phone (linked to the number you want to use as a bot).
-3.  **Accounts** on Heroku, Render, or Railway (if deploying to cloud).
+3.  **Accounts** on Render or Railway (if deploying to cloud).
 
 ---
 
@@ -77,22 +102,12 @@ Click the **Fork** button at the top right of this page to create your own copy 
 
 ### Step 2: Choose Your Platform ☁️
 
-#### Option A: Deploy on Heroku (Easiest)
-Heroku is a cloud platform that makes deployment super simple.
-
-1.  Click the button below:
-    <br>
-    <a href="https://heroku.com/deploy?template=https://github.com/JonniTech/Tervux-WhatsApp-Bot">
-      <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy to Heroku">
-    </a>
-2.  Fill in the app name.
-3.  (Optional) Enter your `PHONE` number in the environment variable if you want a pairing code (e.g., `255712345678`).
-4.  Click **Deploy App**.
-5.  Wait for the build to finish, then click **View Logs**.
-6.  Scan the QR code from the logs (or use the Pairing Code if configured).
-
-#### Option B: Deploy on Railway 🚂
+#### Option A: Deploy on Railway 🚂
 Railway offers great uptime and speed.
+
+<a href="https://railway.app/new">
+<img src="https://railway.app/button.svg" alt="Deploy on Railway">
+</a>
 
 1.  Create an account on [Railway.app](https://railway.app/).
 2.  Click **New Project** > **Deploy from GitHub repo**.
@@ -100,8 +115,12 @@ Railway offers great uptime and speed.
 4.  Go to **Settings** > **Variables** and add `PHONE` (optional).
 5.  Wait for deployment. Go to the **Deployments** tab and view logs to scan the QR code.
 
-#### Option C: Deploy on Render ☁️
+#### Option B: Deploy on Render ☁️
 Render is a solid alternative for hosting.
+
+<a href="https://render.com/deploy">
+<img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render">
+</a>
 
 1.  Create an account on [Render.com](https://render.com/).
 2.  Click **New +** > **Web Service**.
@@ -112,7 +131,7 @@ Render is a solid alternative for hosting.
 5.  Click **Create Web Service**.
 6.  Once live, check the **Logs** tab to scan the QR code.
 
-#### Option D: Local Installation 💻
+#### Option C: Local Installation 💻
 Run the bot on your own computer (PC/Termux).
 
 ```bash
@@ -155,6 +174,13 @@ A: The bot automatically recognizes the number that scans the QR code as the own
 
 Imetengenezwa kwa kutumia **Node.js** na library ya **Baileys**, ikihakikisha ufanisi na kasi. Na kizuri zaidi, ni **bure kabisa** kutumia!
 
+<br>
+<div align="center">
+  <img src="./public/welcome-message.jpeg" alt="Ujumbe wa Karibu" width="80%" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+  <p><i>Ujumbe wa kukaribisha wa bot!</i></p>
+</div>
+<br>
+
 ## 🚀 Vipengele
 
 | Kipengele | Maelezo | Ikoni |
@@ -166,6 +192,24 @@ Imetengenezwa kwa kutumia **Node.js** na library ya **Baileys**, ikihakikisha uf
 | **Always Online** | Inaweka status yako kuwa 'Online' muda wote (inawezekana kuzima). | 🟢 |
 | **Mwandiko wa Mapambo** | Majibu yote yanatumia fonti nzuri za Unicode kupendezesha chat. | 🎨 |
 
+<br>
+<div align="center">
+  <h3>📸 Picha za Skrini</h3>
+  <table>
+    <tr>
+      <td align="center">
+        <img src="./public/help-menu-start.jpeg" alt="Menyu ya Msaada Mwanzo" width="300" style="border-radius: 10px;">
+        <br><b>Kichwa cha Menyu</b>
+      </td>
+      <td align="center">
+        <img src="./public/help-menu-end.jpeg" alt="Menyu ya Msaada Mwisho" width="300" style="border-radius: 10px;">
+        <br><b>Mwisho wa Menyu</b>
+      </td>
+    </tr>
+  </table>
+</div>
+<br>
+
 ---
 
 ## 🛠️ Mahitaji
@@ -173,7 +217,7 @@ Imetengenezwa kwa kutumia **Node.js** na library ya **Baileys**, ikihakikisha uf
 Kabla ya kuanza, hakikisha una vitu hivi:
 1.  **Akaunti ya GitHub** (ili kufanya 'Fork' project hii).
 2.  **WhatsApp** kwenye simu yako (namba ambayo unataka iwe bot).
-3.  **Akaunti** kwenye Heroku, Render, au Railway (kama unataka kuweka mtandaoni).
+3.  **Akaunti** kwenye Render au Railway (kama unataka kuweka mtandaoni).
 
 ---
 
@@ -188,22 +232,12 @@ Bonyeza kitufe cha **Fork** juu kulia mwa ukurasa huu ili kutengeneza nakala yak
 
 ### Hatua ya 2: Chagua Platform Yako ☁️
 
-#### Chaguo A: Deploy kwenye Heroku (Rahisi Zaidi)
-Heroku ni njia rahisi sana ya kuweka bot hewani.
-
-1.  Bonyeza kitufe hapa chini:
-    <br>
-    <a href="https://heroku.com/deploy?template=https://github.com/JonniTech/Tervux-WhatsApp-Bot">
-      <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy to Heroku">
-    </a>
-2.  Jaza jina la app (App Name).
-3.  (Hialo) Weka namba yako ya simu kwenye `PHONE` kama unataka kutumia Pairing Code badala ya QR (mfano `255712345678`).
-4.  Bonyeza **Deploy App**.
-5.  Subiri imalize kujenga (build), kisha bonyeza **View Logs**.
-6.  Scan QR code inayoonekana kwenye logs (au tumia Pairing Code kama umeweka).
-
-#### Chaguo B: Deploy kwenye Railway 🚂
+#### Chaguo A: Deploy kwenye Railway 🚂
 Railway ni chaguo zuri kwa sababu inakaa hewani muda mrefu bila kuzima.
+
+<a href="https://railway.app/new">
+<img src="https://railway.app/button.svg" alt="Deploy on Railway">
+</a>
 
 1.  Tengeneza akaunti [Railway.app](https://railway.app/).
 2.  Bonyeza **New Project** > **Deploy from GitHub repo**.
@@ -211,8 +245,12 @@ Railway ni chaguo zuri kwa sababu inakaa hewani muda mrefu bila kuzima.
 4.  Nenda kwenye **Settings** > **Variables** na ongeza `PHONE` (kama unataka).
 5.  Subiri imalize. Nenda kwenye tab ya **Deployments** na angalia logs ili ku-scan QR.
 
-#### Chaguo C: Deploy kwenye Render ☁️
+#### Chaguo B: Deploy kwenye Render ☁️
 Render ni mbadala mzuri wa Heroku.
+
+<a href="https://render.com/deploy">
+<img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render">
+</a>
 
 1.  Tengeneza akaunti [Render.com](https://render.com/).
 2.  Bonyeza **New +** > **Web Service**.
@@ -223,7 +261,7 @@ Render ni mbadala mzuri wa Heroku.
 5.  Bonyeza **Create Web Service**.
 6.  Ikikamilika, angalia tab ya **Logs** ili kuona QR code na ku-scan.
 
-#### Chaguo D: Kuweka kwenye PC/Termux 💻
+#### Chaguo C: Kuweka kwenye PC/Termux 💻
 Unaweza kuwasha bot kwenye kompyuta yako au kutumia Termux.
 
 ```bash
