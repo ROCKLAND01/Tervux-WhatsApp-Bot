@@ -6,6 +6,7 @@ import { join } from "path";
 import { commands } from "../commands/index.js";
 import { getCachedConfig, updateConfig, invalidateConfigCache, AUTH_INFO_PATH } from "./configService.js";
 import { getRepoStats as getCachedRepoStats } from "../utils/githubStats.js";
+import { handleGroupParticipantsUpdate, handleGroupMessage } from "./groupEventHandler.js";
 
 export const messageCache = new Map();
 
@@ -284,6 +285,11 @@ ${githubSection}
         }
     });
 
+    // Group Participants Update (Welcome/Goodbye)
+    sock.ev.on("group-participants.update", async (update) => {
+        await handleGroupParticipantsUpdate(sock, update);
+    });
+
     // Status Auto-Actions
     sock.ev.on("messages.upsert", async ({ messages }) => {
         for (const m of messages) {
@@ -500,6 +506,9 @@ ${text}
                 m.message.extendedTextMessage?.text ||
                 m.message.imageMessage?.caption ||
                 m.message.videoMessage?.caption || "";
+
+            // Group Event Handler (Antilink, etc.)
+            if (await handleGroupMessage(sock, m)) continue;
 
             const config = getCachedConfig();
             const prefix = config.prefix || "!";
