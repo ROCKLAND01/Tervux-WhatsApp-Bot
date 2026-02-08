@@ -1,6 +1,16 @@
 <div align="center">
 
-<img src="./public/tervus-logo.png" alt="Tervux Bot Logo" width="180" height="180" style="border-radius: 50%;">
+<!-- Top Animated Border -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+
+<br>
+
+<!-- Logo with Border Frame -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="300">
+
+<img src="./public/tervus-logo.png" alt="Tervux Bot Logo" width="200" height="200" style="border-radius: 50%;">
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="300">
 
 <br><br>
 
@@ -53,7 +63,8 @@
 
 <br>
 
----
+<!-- Section Divider -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <br>
 
@@ -119,7 +130,8 @@
 
 <br>
 
----
+<!-- Deployment Divider -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <br>
 
@@ -192,7 +204,8 @@ npm start
 
 <br>
 
----
+<!-- Authentication Divider -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <br>
 
@@ -267,7 +280,8 @@ If you **do not** set the `PHONE` variable, a QR code will be displayed in the l
 
 <br>
 
----
+<!-- Swahili Divider -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <br>
 
@@ -359,22 +373,73 @@ npm start
 
 <br>
 
+<div align="center">
+
+<br>
+
 ---
 
 <br>
 
-<div align="center">
-
-<img src="https://media.giphy.com/media/L1R1TVThF8Ul39Z7X6/giphy.gif" width="80">
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=600&size=22&pause=1000&color=888888&center=true&vCenter=true&width=400&height=40&lines=TERVUX+BOT+FOOTER" alt="Footer">
 
 <br><br>
 
-<img src="https://img.shields.io/badge/Created%20by-Nyaganya%20Malima%20Nyaganya-25D366?style=for-the-badge" alt="Developer">
+<!-- Stats Row -->
+<p>
+  <img src="https://img.shields.io/github/repo-size/JonniTech/Tervux-WhatsApp-Bot?style=for-the-badge&logo=github&color=181717&labelColor=1a1a1b" alt="Repo Size"/>
+  <img src="https://img.shields.io/github/last-commit/JonniTech/Tervux-WhatsApp-Bot?style=for-the-badge&logo=github&color=25D366&labelColor=1a1a1b" alt="Last Commit"/>
+  <img src="https://img.shields.io/github/languages/top/JonniTech/Tervux-WhatsApp-Bot?style=for-the-badge&logo=javascript&color=F7DF1E&labelColor=1a1a1b" alt="Top Language"/>
+</p>
+
+<!-- License & Views -->
+<p>
+  <img src="https://img.shields.io/github/license/JonniTech/Tervux-WhatsApp-Bot?style=for-the-badge&logo=opensourceinitiative&color=3399FF&labelColor=1a1a1b" alt="License"/>
+  <img src="https://komarev.com/ghpvc/?username=JonniTech&label=REPO+VIEWS&style=for-the-badge&color=A020F0" alt="Profile Views"/>
+  <img src="https://img.shields.io/badge/NODE-20+-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node Version"/>
+</p>
+
+<br>
+
+<!-- Divider -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <br><br>
 
+<!-- Developer Credit -->
+<img src="https://img.shields.io/badge/Developed%20with%20%E2%9D%A4%20by-Nyaganya%20Malima%20Nyaganya-25D366?style=for-the-badge" alt="Developer">
+
+<br><br>
+
+<!-- Social Links -->
 <a href="https://github.com/JonniTech/Tervux-WhatsApp-Bot">
-  <img src="https://img.shields.io/badge/GITHUB-REPOSITORY-181717?style=for-the-badge&logo=github&logoColor=white" height="35">
+  <img src="https://img.shields.io/badge/STAR%20THIS%20REPO-FFD700?style=for-the-badge&logo=github&logoColor=black" height="35">
 </a>
+&nbsp;&nbsp;
+<a href="https://github.com/JonniTech/Tervux-WhatsApp-Bot/fork">
+  <img src="https://img.shields.io/badge/FORK%20NOW-00BFFF?style=for-the-badge&logo=github&logoColor=white" height="35">
+</a>
+&nbsp;&nbsp;
+<a href="https://github.com/JonniTech/Tervux-WhatsApp-Bot/issues">
+  <img src="https://img.shields.io/badge/REPORT%20ISSUE-FF4500?style=for-the-badge&logo=github&logoColor=white" height="35">
+</a>
+
+<br><br>
+
+<!-- Animated Wave -->
+<img src="https://media.giphy.com/media/L1R1TVThF8Ul39Z7X6/giphy.gif" width="60">
+
+<br><br>
+
+<!-- Copyright -->
+<sub>
+  <img src="https://img.shields.io/badge/©%202025--2026-Tervux%20Company-181717?style=flat-square" alt="Copyright"/>
+  &nbsp;|&nbsp;
+  <img src="https://img.shields.io/badge/MIT-License-3399FF?style=flat-square" alt="MIT License"/>
+  &nbsp;|&nbsp;
+  <img src="https://img.shields.io/badge/Made%20in-Tanzania%20🇹🇿-25D366?style=flat-square" alt="Made in Tanzania"/>
+</sub>
+
+<br><br>
 
 </div>
