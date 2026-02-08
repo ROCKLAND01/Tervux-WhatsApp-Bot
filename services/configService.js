@@ -31,15 +31,24 @@ if (!existsSync(AUTH_DIR)) {
  * Load configuration from local JSON file
  */
 export function loadConfig() {
+    let fileConfig = {};
     try {
         if (existsSync(CONFIG_PATH)) {
             const data = readFileSync(CONFIG_PATH, "utf-8");
-            return { ...DEFAULT_CONFIG, ...JSON.parse(data) };
+            fileConfig = JSON.parse(data);
         }
     } catch (err) {
         console.error("❌ Failed to load config.json:", err.message);
     }
-    return { ...DEFAULT_CONFIG };
+
+    // Merge defaults -> file config -> environment variables (highest priority)
+    return {
+        ...DEFAULT_CONFIG,
+        ...fileConfig,
+        phone: process.env.PHONE || fileConfig.phone || DEFAULT_CONFIG.phone,
+        ownerNumber: process.env.OWNER_NUMBER || fileConfig.ownerNumber || DEFAULT_CONFIG.ownerNumber,
+        prefix: process.env.PREFIX || fileConfig.prefix || DEFAULT_CONFIG.prefix
+    };
 }
 
 /**

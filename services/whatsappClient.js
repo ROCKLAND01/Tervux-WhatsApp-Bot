@@ -69,13 +69,15 @@ export async function createWhatsAppClient() {
     // Pairing Code Logic - only run if phone is set AND we don't have valid credentials
     const hasValidSession = state.creds?.registered || state.creds?.me?.id;
     if (config.phone && !hasValidSession) {
+        console.log(`\n📱 Phone number detected: ${config.phone}`);
+        console.log(`🔄 Switching to Pairing Code mode...`);
         setTimeout(async () => {
             try {
                 const code = await sock.requestPairingCode(config.phone.replace(/[^0-9]/g, ''));
-                console.log(`\n📞 Pairing Code: ${code}`);
-                console.log(`Enter this code on WhatsApp > Linked Devices > Link a Device > Link with phone number instead\n`);
+                console.log(`\n📞 𝗣𝗔𝗜𝗥𝗜𝗡𝗚 𝗖𝗢𝗗𝗘: ${code}`);
+                console.log(`👉 Enter this code on WhatsApp > Linked Devices > Link a Device > Link with phone number instead\n`);
             } catch (e) {
-                console.error("Failed to request pairing code:", e.message);
+                console.error("❌ Failed to request pairing code:", e.message);
             }
         }, 5000);
     }
@@ -85,12 +87,12 @@ export async function createWhatsAppClient() {
         const { connection, lastDisconnect, qr } = update;
 
         if (qr && !config.phone) {
-            console.log(`\n📱 Scan this QR code with WhatsApp to connect:\n`);
+            console.log(`\n📱 Scan this QR code with WhatsApp to connect:`);
+            console.log(`(If the QR is broken/too big, set the 'PHONE' environment variable to use Pairing Code instead!)\n`);
             try {
                 qrcode.generate(qr, { small: true });
             } catch (e) {
-                console.log(`QR Code: ${qr}`);
-                console.log(`(Use an external QR generator if text is not rendering)`);
+                console.log(`QR Code Generation Failed. Raw QR: ${qr}`);
             }
         }
 
