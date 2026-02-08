@@ -127,9 +127,10 @@ Render is a solid alternative for hosting.
 1.  Create an account on [Render.com](https://render.com/).
 2.  Click **New +** > **Web Service**.
 3.  Connect your GitHub and select the repo.
-4.  **Important:**
+4.  **Important Configuration:**
     *   **Build Command:** `npm install`
     *   **Start Command:** `npm start`
+    *   **Environment Variables:** Go to the "Environment" tab and add a key `PHONE` with your number (e.g., `255712345678`) to use Pairing Code.
 5.  Click **Create Web Service**.
 6.  Once live, check the **Logs** tab to scan the QR code.
 
@@ -143,12 +144,12 @@ git clone https://github.com/JonniTech/Tervux-WhatsApp-Bot.git
 # 2. Enter the directory
 cd Tervux-WhatsApp-Bot
 
-# 3. Install dependencies
+# 3. Install dependencies (Node.js 20+)
 npm install
 
 # 4. Start the bot
 npm start
-```
+``` 
 
 ---
 

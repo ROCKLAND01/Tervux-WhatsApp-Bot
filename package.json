@@ -10,9 +10,9 @@
     "start": "node --expose-gc --max-old-space-size=460 server.js"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
-  "author": "Tervux Company",
+  "author": "Nyaganya Malima Nyaganya",
   "license": "MIT",
   "dependencies": {
     "@whiskeysockets/baileys": "^7.0.0-rc.9",
