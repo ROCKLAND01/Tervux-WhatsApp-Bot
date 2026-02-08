@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --expose-gc server.js",
+    "dev": "nodemon --ignore auth_info/ --expose-gc server.js",
     "start": "node --expose-gc --max-old-space-size=460 server.js"
   },
   "engines": {
@@ -15,11 +15,12 @@
   "author": "Tervux Company",
   "license": "MIT",
   "dependencies": {
+    "@whiskeysockets/baileys": "^7.0.0-rc.9",
     "axios": "^1.13.2",
-    "baileys": "^7.0.0-rc.9",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
+    "pino": "^10.3.0",
     "socket.io": "^4.8.3",
     "yt-search": "^2.13.1"
   },

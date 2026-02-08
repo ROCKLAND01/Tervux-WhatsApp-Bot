@@ -1,0 +1,27 @@
+{
+    "name": "Tervux WhatsApp Bot",
+    "description": "Powerful WhatsApp Bot build with Baileys.",
+    "repository": "https://github.com/JonniTech/Tervux-WhatsApp-Bot",
+    "logo": "https://github.com/JonniTech/Tervux-WhatsApp-Bot/raw/main/assets/tervux-logo.png",
+    "keywords": [
+        "whatsapp",
+        "bot",
+        "baileys",
+        "node",
+        "tervux"
+    ],
+    "buildpacks": [
+        {
+            "url": "heroku/nodejs"
+        }
+    ],
+    "scripts": {
+        "postdeploy": "npm start"
+    },
+    "env": {
+        "PHONE": {
+            "description": "Your phone number (with country code) if you want to use Pairing Code. Leave empty for QR Code.",
+            "required": false
+        }
+    }
+}

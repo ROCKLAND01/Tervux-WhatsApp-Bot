@@ -32,50 +32,18 @@ import { qr } from "./tools/qr.js";
 import { weather } from "./tools/weather.js";
 import { translate } from "./tools/translate.js";
 
-// Settings Commands (implemented via config.json)
-import { getCachedConfig, updateConfig, invalidateConfigCache } from "../services/configService.js";
-
-// Settings commands - implemented inline
-const settings = async (sock, m, args) => {
-    const config = getCachedConfig();
-    return `⚙️ *BOT SETTINGS*
-━━━━━━━━━━━━━━━━━━━━
-• *Prefix:* ${config.prefix || "!"}
-• *Always Online:* ${config.alwaysOnline ? "✅" : "❌"}
-• *Auto Like Status:* ${config.autoLikeStatus ? "✅" : "❌"}
-• *Auto View Status:* ${config.autoViewStatus ? "✅" : "❌"}
-• *Anti Delete:* ${config.antiDelete ? "✅" : "❌"}
-• *Anti Call:* ${config.antiCall ? "✅" : "❌"}
-• *Auto Read:* ${config.autoReadMessages ? "✅" : "❌"}
-• *Always Typing:* ${config.alwaysTyping ? "✅" : "❌"}
-• *Always Recording:* ${config.alwaysRecording ? "✅" : "❌"}
-
-💡 Use toggle commands to change settings:
-!alwaysonline on/off
-!autolikestatus on/off
-!antidelete on/off`;
-};
-
-// Toggle commands
-const createToggle = (settingKey, displayName) => async (sock, m, args) => {
-    const value = args[0]?.toLowerCase();
-    if (value !== "on" && value !== "off") {
-        return `❓ Usage: !${displayName.toLowerCase()} on/off`;
-    }
-    const newValue = value === "on";
-    updateConfig({ [settingKey]: newValue });
-    invalidateConfigCache();
-    return `✅ *${displayName}* is now ${newValue ? "enabled" : "disabled"}!`;
-};
-
-const alwaysonline = createToggle("alwaysOnline", "Always Online");
-const autolikestatus = createToggle("autoLikeStatus", "Auto Like Status");
-const autoviewstatus = createToggle("autoViewStatus", "Auto View Status");
-const antidelete = createToggle("antiDelete", "Anti Delete");
-const anticall = createToggle("antiCall", "Anti Call");
-const autoread = createToggle("autoReadMessages", "Auto Read");
-const alwaystyping = createToggle("alwaysTyping", "Always Typing");
-const alwaysrecording = createToggle("alwaysRecording", "Always Recording");
+// Settings Commands
+import { settings } from "./settings/settings.js";
+import {
+    alwaysonline,
+    autolikestatus,
+    autoviewstatus,
+    antidelete,
+    anticall,
+    autoread,
+    alwaystyping,
+    alwaysrecording
+} from "./settings/toggles.js";
 
 export const commands = {
     // Fun Commands

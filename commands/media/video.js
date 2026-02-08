@@ -3,29 +3,48 @@ import axios from "axios";
 
 export const video = async (sock, m, args) => {
     const query = args.join(" ");
-    if (!query) return "💡 Usage: !video [video name]\nExample: !video funny cats";
+    if (!query) {
+        return `╔══════════════════════════════════╗
+║    📹 *𝕋𝔼ℝ𝕍𝕌𝕏 𝕍𝕀𝔻𝔼𝕆* 📹          ║
+╚══════════════════════════════════╝
+
+📝 *𝕌𝕤𝕒𝕘𝕖:* !video [video name]
+📌 *𝔼𝕩𝕒𝕞𝕡𝕝𝕖:* !video funny cats
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Download videos instantly! 🎬`;
+    }
 
     try {
         const search = await yts(query);
         const vid = search.videos[0];
 
-        if (!vid) return "❌ Video not found.";
+        if (!vid) {
+            return `╔══════════════════════════════════╗
+║       ❌ *ℕ𝕆𝕋 𝔽𝕆𝕌ℕ𝔻* ❌          ║
+╚══════════════════════════════════╝
 
-        const message = `
-📹 *VIDEO DOWNLOADER*
-━━━━━━━━━━━━━━━━━━━━
-📌 *Title:* ${vid.title}
-⏱️ *Duration:* ${vid.timestamp}
-👀 *Views:* ${vid.views}
-🔗 *Link:* ${vid.url}
-━━━━━━━━━━━━━━━━━━━━
-_Downloading video... please wait._
-        `;
+Video not found.
+Try a different search term.`;
+        }
 
-        const thinLine = "─── · 。ﾟ☆: *.☽ .* :☆ﾟ. ───";
-        const footerText = `\n\n${thinLine}\n   💠 *Powered by Tervux Company*\n   🔗 https://tervux.vercel.app`;
+        const message = `╔══════════════════════════════════╗
+║    📹 *𝕍𝕀𝔻𝔼𝕆 𝔻𝕆𝕎ℕ𝕃𝕆𝔸𝔻* 📹        ║
+╚══════════════════════════════════╝
 
-        // SAFE MEDIA DELIVERY: Download thumbnail ourselves
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 *𝕍𝕀𝔻𝔼𝕆 𝕀ℕ𝔽𝕆*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📌 *𝕋𝕚𝕥𝕝𝕖:* ${vid.title}
+⏱️ *𝔻𝕦𝕣𝕒𝕥𝕚𝕠𝕟:* ${vid.timestamp}
+👀 *𝕍𝕚𝕖𝕨𝕤:* ${vid.views}
+🔗 *𝕃𝕚𝕟𝕜:* ${vid.url}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+_Downloading video... please wait._ ⏳`;
+
+        // SAFE MEDIA DELIVERY
         let thumbBuffer;
         try {
             const res = await axios.get(vid.thumbnail, { responseType: 'arraybuffer', timeout: 5000 });
@@ -36,7 +55,7 @@ _Downloading video... please wait._
 
         const sentMsg = await sock.sendMessage(m.key.remoteJid, {
             ...(thumbBuffer ? { image: thumbBuffer } : { text: message }),
-            ...(thumbBuffer ? { caption: message + footerText } : {}),
+            ...(thumbBuffer ? { caption: message } : {}),
             linkPreview: null
         }, { quoted: m });
 
@@ -69,19 +88,29 @@ _Downloading video... please wait._
 
             await sock.sendMessage(m.key.remoteJid, {
                 video: Buffer.from(videoBuffer.data),
-                caption: vid.title + footerText,
+                caption: vid.title,
                 mimetype: 'video/mp4'
             }, { quoted: m });
 
         } catch (downloadErr) {
             console.error("Video download failed:", downloadErr.message);
             await sock.sendMessage(m.key.remoteJid, {
-                text: "⚠️ *Download failed:* The video is too large or the server is busy.\n👇 Please watch using the link above."
+                text: `╔══════════════════════════════════╗
+║        ❌ *𝔼ℝℝ𝕆ℝ* ❌             ║
+╚══════════════════════════════════╝
+
+⚠️ *Download failed:*
+The video is too large or server busy.
+👇 Please watch using the link above.`
             }, { quoted: m });
         }
 
     } catch (err) {
         console.error("Video error:", err.message);
-        return "❌ Failed to process video request.";
+        return `╔══════════════════════════════════╗
+║         ❌ *𝔼ℝℝ𝕆ℝ* ❌            ║
+╚══════════════════════════════════╝
+
+Failed to process video request.`;
     }
 };

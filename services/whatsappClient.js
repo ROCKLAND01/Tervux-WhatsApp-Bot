@@ -1,8 +1,11 @@
-import { default as makeWASocket, DisconnectReason, Browsers, useMultiFileAuthState } from "baileys";
+import { default as makeWASocket, DisconnectReason, Browsers, useMultiFileAuthState } from "@whiskeysockets/baileys";
+import pino from "pino";
+import qrcode from "qrcode-terminal";
 import { existsSync, mkdirSync, rmSync, readFileSync } from "fs";
 import { join } from "path";
 import { commands } from "../commands/index.js";
 import { getCachedConfig, updateConfig, invalidateConfigCache, AUTH_INFO_PATH } from "./configService.js";
+import { getRepoStats as getCachedRepoStats } from "../utils/githubStats.js";
 
 export const messageCache = new Map();
 
@@ -33,25 +36,25 @@ let reconnectAttempts = 0;
 const MAX_RECONNECT_ATTEMPTS = 10;
 
 export async function createWhatsAppClient() {
+    const config = getCachedConfig();
     // Use Baileys built-in file-based auth
     const { state, saveCreds } = await useMultiFileAuthState(AUTH_INFO_PATH);
 
     console.log(`🔌 Creating WhatsApp socket...`);
 
     const sock = makeWASocket({
+        logger: pino({ level: "silent" }),
         auth: state,
         browser: Browsers.ubuntu("Chrome"),
-        mobile: false,
         syncFullHistory: false,
         shouldSyncHistoryMessage: () => false,
-        connectTimeoutMs: 120000,
-        defaultQueryTimeoutMs: 90000,
-        keepAliveIntervalMs: 30000,
+        connectTimeoutMs: 180000, // 3 minutes for slow networks
+        defaultQueryTimeoutMs: 180000,
+        keepAliveIntervalMs: 25000,
+        retryRequestDelayMs: 3000,
+        qrTimeout: 60000,
+        markOnlineOnConnect: true,
         generateHighQualityLinkPreview: false,
-        markOnlineOnConnect: false,
-        msgRetryCounterCache: new Map(),
-        retryRequestDelayMs: 2000,
-        linkPreviewImageThumbnailWidth: 192,
         getMessage: async (key) => {
             const msg = messageCache.get(key.id);
             return msg?.message;
@@ -63,18 +66,32 @@ export async function createWhatsAppClient() {
         await saveCreds();
     });
 
+    // Pairing Code Logic - only run if phone is set AND we don't have valid credentials
+    const hasValidSession = state.creds?.registered || state.creds?.me?.id;
+    if (config.phone && !hasValidSession) {
+        setTimeout(async () => {
+            try {
+                const code = await sock.requestPairingCode(config.phone.replace(/[^0-9]/g, ''));
+                console.log(`\n📞 Pairing Code: ${code}`);
+                console.log(`Enter this code on WhatsApp > Linked Devices > Link a Device > Link with phone number instead\n`);
+            } catch (e) {
+                console.error("Failed to request pairing code:", e.message);
+            }
+        }, 5000);
+    }
+
     sock.ev.on("connection.update", async (update) => {
+
         const { connection, lastDisconnect, qr } = update;
 
-        if (qr) {
+        if (qr && !config.phone) {
             console.log(`\n📱 Scan this QR code with WhatsApp to connect:\n`);
-            // Simple ASCII QR representation - users can use external QR scanner
-            import("qrcode-terminal").then(qrc => {
-                qrc.generate(qr, { small: true });
-            }).catch(() => {
+            try {
+                qrcode.generate(qr, { small: true });
+            } catch (e) {
                 console.log(`QR Code: ${qr}`);
                 console.log(`(Use an external QR generator if text is not rendering)`);
-            });
+            }
         }
 
         if (connection === "connecting") {
@@ -136,22 +153,87 @@ export async function createWhatsAppClient() {
                 const config = getCachedConfig();
                 const botJid = (sock.user.id.split("@")[0].split(":")[0]) + "@s.whatsapp.net";
 
-                const welcomeMsg = `🎉 *Tervux Bot Connected!* 🎉
+                const stats = await getCachedRepoStats(); // Helper we need to import or reuse 
 
-Your bot is now online and ready! 🚀
+                const githubSection = stats ?
+                    `╭───『 📊 *𝔾𝕀𝕋ℍ𝕌𝔹 𝕊𝕋𝔸𝕋𝕊* 』───╮
+│ ⭐ *Stars:* ${stats.stars}
+│ 🍴 *Forks:* ${stats.forks}
+│ 🐞 *Issues:* ${stats.issues}
+│ 📅 *Created:* ${stats.createdAt}
+│ 🔄 *Updated:* ${stats.updatedAt}
+╰──────────────────────────────╯` : "";
 
-🤖 *Available Commands:*
-• *!help* - Show all commands
-• *!botstats* - Check system status
-• *!alwaysonline on* - Stay online 24/7
-• *!settings* - View/edit settings
+                const welcomeMsg = `╔══════════════════════════════════╗
+║  🤖 *𝕋𝔼ℝ𝕍𝕌𝕏 𝔹𝕆𝕋 ℂ𝕆ℕℕ𝔼ℂ𝕋𝔼𝔻* 🤖  ║
+╚══════════════════════════════════╝
 
-💡 Type *!help* to see all available commands.
+✨ *Welcome!* Your personal WhatsApp assistant is now online and ready to serve you! ✨
 
-━━━━━━━━━━━━━━━━━━━━
-    💠 *Powered by Tervux*`;
+${githubSection}
 
-                await sock.sendMessage(botJid, { text: welcomeMsg });
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎮 *𝔽𝕌ℕ ℤ𝕆ℕ𝔼*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• *!ship* - Love calculator 💕
+• *!fancy* - Fancy fonts generator ✨
+• *!joke* - Random jokes 😂
+• *!fact* - Fun facts 🧠
+• *!truth* / *!dare* - Game time 🔥
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚙️ *𝔾𝔼ℕ𝔼ℝ𝔸𝕃*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• *!help* - Show all commands 📚
+• *!ping* - Check latency ⚡
+• *!botstats* - System stats 📊
+• *!owner* - Owner info 👤
+• *!block* / *!unblock* - User management 🚫
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎬 *𝕄𝔼𝔻𝕀𝔸*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• *!movie* - Movie search 🎥
+• *!sport* - Team info ⚽
+• *!news* - World news 📰
+• *!play* - Play music 🎵
+• *!video* - Download video 📹
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🛠️ *𝕋𝕆𝕆𝕃𝕊*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• *!calc* - Calculator 🧮
+• *!qr* - QR generator 📱
+• *!weather* - Weather forecast 🌤️
+• *!translate* - Translator 🌍
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚙️ *𝕊𝔼𝕋𝕋𝕀ℕ𝔾𝕊*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• *!settings* - View configuration 🔧
+• *!alwaysonline* - 24/7 Online 🌐
+• *!antidelete* - Anti-delete info 🛡️
+• *!anticall* - Anti-call info 📵
+• *!autoread* - Auto-read info ✔️
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💡 *Quick Start:* Type *!help* for more details
+
+╔══════════════════════════════════╗
+║    💠 *ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝕓𝕪 𝕋𝔼ℝ𝕍𝕌𝕏* 💠    ║
+╚══════════════════════════════════╝
+
+🔗 github.com/JonniTech/Tervux-WhatsApp-Bot`;
+
+                // Send with logo if available
+                if (logoBuffer) {
+                    await sock.sendMessage(botJid, {
+                        image: logoBuffer,
+                        caption: welcomeMsg
+                    });
+                } else {
+                    await sock.sendMessage(botJid, { text: welcomeMsg });
+                }
                 console.log(`📬 Welcome message sent!`);
             } catch (e) {
                 console.error("Failed to send welcome:", e.message);
@@ -219,13 +301,31 @@ Your bot is now online and ready! 🚀
         }
     });
 
-    // Anti-Delete Cache
+    // Anti-Delete Cache - store messages for later restoration
     sock.ev.on("messages.upsert", async ({ messages }) => {
         for (const m of messages) {
             if (!m.message) continue;
 
-            // Cache messages for anti-delete
-            messageCache.set(m.key.id, m);
+            // Skip protocol messages (delete notifications, read receipts, etc.)
+            if (m.message.protocolMessage) continue;
+            if (m.message.reactionMessage) continue;
+            if (m.message.pollUpdateMessage) continue;
+
+            // Get the actual message content type
+            const msgType = Object.keys(m.message)[0];
+
+            // Only cache messages with actual content
+            const validTypes = [
+                'conversation', 'extendedTextMessage', 'imageMessage',
+                'videoMessage', 'audioMessage', 'documentMessage',
+                'stickerMessage', 'contactMessage', 'locationMessage',
+                'viewOnceMessage', 'viewOnceMessageV2', 'ephemeralMessage'
+            ];
+
+            if (validTypes.includes(msgType)) {
+                messageCache.set(m.key.id, m);
+                console.log(`📦 [Cache] Stored message ${m.key.id.substring(0, 10)}... type: ${msgType}`);
+            }
 
             // Limit cache size
             if (messageCache.size > 500) {
@@ -235,43 +335,143 @@ Your bot is now online and ready! 🚀
         }
     });
 
+    // Helper function to restore deleted messages
+    async function restoreDeletedMessage(sock, originalMsg, deletedId) {
+        try {
+            const sender = originalMsg.key.participant || originalMsg.key.remoteJid;
+            const senderName = sender.split("@")[0];
+            const timestamp = new Date().toLocaleString("en-US", {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: true
+            });
+
+            let msgContent = originalMsg.message;
+            console.log(`🔍 [AntiDelete] Original message keys:`, Object.keys(msgContent || {}));
+
+            // Unwrap viewOnce containers
+            if (msgContent?.viewOnceMessage) msgContent = msgContent.viewOnceMessage.message;
+            if (msgContent?.viewOnceMessageV2) msgContent = msgContent.viewOnceMessageV2.message;
+            if (msgContent?.viewOnceMessageV2Extension) msgContent = msgContent.viewOnceMessageV2Extension.message;
+            if (msgContent?.ephemeralMessage) msgContent = msgContent.ephemeralMessage.message;
+
+            const type = Object.keys(msgContent || {})[0];
+            console.log(`🔍 [AntiDelete] Message type: ${type}`);
+
+            // Extract text based on message type
+            let text = "";
+            let msgTypeDisplay = "📝 Text";
+
+            if (type === "conversation") {
+                text = msgContent.conversation || "";
+            } else if (type === "extendedTextMessage") {
+                text = msgContent.extendedTextMessage?.text || "";
+            } else if (type === "imageMessage") {
+                text = msgContent.imageMessage?.caption || "[No Caption]";
+                msgTypeDisplay = "🖼️ Image";
+            } else if (type === "videoMessage") {
+                text = msgContent.videoMessage?.caption || "[No Caption]";
+                msgTypeDisplay = "🎬 Video";
+            } else if (type === "documentMessage") {
+                text = msgContent.documentMessage?.fileName || "[Unknown File]";
+                msgTypeDisplay = "📄 Document";
+            } else if (type === "audioMessage") {
+                text = "[Voice Message]";
+                msgTypeDisplay = "🎤 Voice";
+            } else if (type === "stickerMessage") {
+                text = "[Sticker]";
+                msgTypeDisplay = "🎭 Sticker";
+            } else if (type === "contactMessage") {
+                text = msgContent.contactMessage?.displayName || "Unknown";
+                msgTypeDisplay = "👤 Contact";
+            } else if (type === "locationMessage") {
+                text = "[Location Shared]";
+                msgTypeDisplay = "📍 Location";
+            } else {
+                text = `[${type || "Unknown"} message]`;
+                msgTypeDisplay = "❓ Unknown";
+            }
+
+            console.log(`🔍 [AntiDelete] Extracted text: "${text}"`);
+
+            const output = `╔══════════════════════════════════╗
+║ 🛡️ *𝕋𝔼ℝ𝕍𝕌𝕏 𝔸ℕ𝕋𝕀-𝔻𝔼𝕃𝔼𝕋𝔼* 🛡️   ║
+╠══════════════════════════════════╣
+║  _𝕊𝕠𝕞𝕖𝕠𝕟𝕖 𝕥𝕣𝕚𝕖𝕕 𝕥𝕠 𝕙𝕚𝕕𝕖 𝕥𝕙𝕚𝕤!_   ║
+╚══════════════════════════════════╝
+
+👤 *𝕊𝕖𝕟𝕕𝕖𝕣:* @${senderName}
+⏰ *ℝ𝕖𝕔𝕠𝕧𝕖𝕣𝕖𝕕:* ${timestamp}
+📂 *𝕋𝕪𝕡𝕖:* ${msgTypeDisplay}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📨 *𝔻𝔼𝕃𝔼𝕋𝔼𝔻 𝕄𝔼𝕊𝕊𝔸𝔾𝔼:*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+${text}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     💠 *ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝕓𝕪 𝕋𝔼ℝ𝕍𝕌𝕏 𝔹𝕠𝕥* 💠
+🔗 github.com/JonniTech/Tervux-WhatsApp-Bot`;
+
+            await sock.sendMessage(originalMsg.key.remoteJid, {
+                text: output,
+                mentions: [sender]
+            });
+            console.log(`🛡️ Restored deleted message: ${deletedId}`);
+        } catch (err) {
+            console.error("Anti-Delete Error:", err.message);
+        }
+    }
+
     // Anti-Delete Restoration
     sock.ev.on("messages.update", async (updates) => {
         const config = getCachedConfig();
         if (!config.antiDelete) return;
 
         for (const update of updates) {
-            const protocolMsg = update.update?.protocolMessage ||
-                update.update?.message?.protocolMessage;
+            // Method 1: Detect deletion via messageStubType: 1 (Baileys v7 pattern)
+            if (update.update?.messageStubType === 1 && update.update?.message === null) {
+                // Try multiple ID sources
+                const possibleIds = [
+                    update.update?.key?.id,
+                    update.key?.id,
+                    update.update?.messageStubParameters?.[0]
+                ].filter(Boolean);
 
-            if (protocolMsg && (protocolMsg.type === 0 || protocolMsg.type === "REVOKE")) {
-                const deletedId = protocolMsg.key?.id;
-                const originalMsg = messageCache.get(deletedId);
+                console.log(`🔍 [AntiDelete] Possible deleted IDs:`, possibleIds);
+                console.log(`📦 [AntiDelete] Cache contains:`, [...messageCache.keys()].slice(-5)); // Last 5 cached
 
-                if (originalMsg) {
-                    try {
-                        const sender = originalMsg.key.participant || originalMsg.key.remoteJid;
-                        const header = `🛡️ *ANTI-DELETE*\n\n👤 *Author:* @${sender.split("@")[0]}\n━━━━━━━━━━━━━━━━━━━━\n\n`;
-
-                        let msgContent = originalMsg.message;
-                        if (msgContent?.viewOnceMessage) msgContent = msgContent.viewOnceMessage.message;
-                        if (msgContent?.viewOnceMessageV2) msgContent = msgContent.viewOnceMessageV2.message;
-
-                        const type = Object.keys(msgContent || {})[0];
-                        let restorationMsg;
-
-                        if (type === "conversation" || type === "extendedTextMessage") {
-                            const text = msgContent.conversation || msgContent.extendedTextMessage?.text || "";
-                            restorationMsg = { text: header + text, mentions: [sender] };
-                        } else {
-                            restorationMsg = { forward: originalMsg, mentions: [sender] };
-                        }
-
-                        await sock.sendMessage(originalMsg.key.remoteJid, restorationMsg);
-                        console.log(`🛡️ Restored deleted message: ${deletedId}`);
-                    } catch (err) {
-                        console.error("Anti-Delete Error:", err.message);
+                let found = false;
+                for (const deletedId of possibleIds) {
+                    const originalMsg = messageCache.get(deletedId);
+                    if (originalMsg) {
+                        await restoreDeletedMessage(sock, originalMsg, deletedId);
+                        found = true;
+                        break;
                     }
+                }
+
+                if (!found) {
+                    console.log(`⚠️ [AntiDelete] Message not found in cache. Tried IDs:`, possibleIds);
+                }
+                continue;
+            }
+
+            // Method 2: Detect via protocolMessage (older Baileys pattern)
+            const protocolMsg = update.update?.protocolMessage ||
+                update.update?.message?.protocolMessage ||
+                update.message?.protocolMessage;
+
+            if (protocolMsg && (protocolMsg.type === 0 || protocolMsg.type === 5 || protocolMsg.type === "REVOKE")) {
+                const deletedId = protocolMsg.key?.id;
+                console.log(`🔍 [AntiDelete] Detected deletion via protocolMessage, ID: ${deletedId}`);
+
+                const originalMsg = messageCache.get(deletedId);
+                if (originalMsg) {
+                    await restoreDeletedMessage(sock, originalMsg, deletedId);
+                } else {
+                    console.log(`⚠️ [AntiDelete] Message not in cache: ${deletedId}`);
                 }
             }
         }
@@ -299,8 +499,36 @@ Your bot is now online and ready! 🚀
             const botJid = (sock.user?.id?.split("@")[0]?.split(":")[0]) + "@s.whatsapp.net";
 
             if (!m.key.fromMe && senderJid !== botJid) {
+                const accessDeniedMsg = `╔══════════════════════════════════╗
+║      🚫 *ACCESS DENIED* 🚫       ║
+╠══════════════════════════════════╣
+║   _This bot is owner-only_   ║
+╚══════════════════════════════════╝
+
+⚠️ *Hey there!*
+This is a private Tervux Bot instance.
+Only the owner can execute commands.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ *WANT YOUR OWN BOT?*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📌 *It's 100% FREE to deploy!*
+
+📋 *Simple Steps:*
+1️⃣ Fork the repository on GitHub
+2️⃣ Deploy to your server or Railway/Render
+3️⃣ Scan QR code with your WhatsApp
+4️⃣ Enjoy your personal bot! 🎉
+
+🔗 *Get the code here:*
+github.com/JonniTech/Tervux-WhatsApp-Bot
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   💠 *Powered by Tervux Bot* 💠`;
+
                 await sock.sendMessage(m.key.remoteJid, {
-                    text: `🚫 *Access Denied*\n\nThis bot is private. Only the owner can use commands.\n\n✨ *Want your own Tervux Bot?*\nFork it from GitHub and deploy your own!\n\n🔗 https://github.com/YOUR_REPO_HERE`
+                    text: accessDeniedMsg
                 }, { quoted: m });
                 continue;
             }
@@ -315,7 +543,7 @@ Your bot is now online and ready! 🚀
                     const result = await commands[commandName](sock, m, args);
 
                     if (result) {
-                        const footer = `\n\n━━━━━━━━━━━━━━━━━━━━\n    💠 *Powered by Tervux*`;
+                        const footer = `\n\n━━━━━━━━━━━━━━━━━━━━\n💠 *ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝕓𝕪 𝕋𝔼ℝ𝕍𝕌𝕏 𝔹𝕠𝕥*\n🔗 github.com/JonniTech/Tervux-WhatsApp-Bot`;
 
                         if (typeof result === "string") {
                             await sock.sendMessage(m.key.remoteJid, { text: result + footer });

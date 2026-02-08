@@ -1,86 +1,97 @@
-import { readFileSync } from "fs";
-
-let cachedLogo = null;
-let logoChecked = false;
+import { readFileSync, existsSync } from "fs";
+import { join } from "path";
+import { getRepoStats } from "../../utils/githubStats.js";
 
 export const help = async (sock, m, args) => {
-  if (!logoChecked) {
-    try {
-      let path = process.cwd() + "/assets/tervux-logo.png";
-      cachedLogo = readFileSync(path);
-    } catch (e) {
-      console.error("Logo not found for help menu:", e.message);
+  // Load Logo securely
+  let logoBuffer = null;
+  try {
+    const logoPath = join(process.cwd(), "assets", "tervux-logo.png");
+    if (existsSync(logoPath)) {
+      logoBuffer = readFileSync(logoPath);
     }
-    logoChecked = true;
+  } catch (e) {
+    console.error("❌ Failed to load logo for help command:", e.message);
   }
-  const logo = cachedLogo;
 
-  const caption = `
-╭─────────────── ✦ ✧ ✦ ───────────────╮
-        🤖  TERVUX BOT  🤖         
-╰─────────────── ✦ ✧ ✦ ───────────────╯
-      ✨  Self-Hosted Assistant  ✨         
+  // Fetch GitHub Stats
+  const stats = await getRepoStats();
 
-🚀 *Your Personal WhatsApp Automation*
+  // Fallback if stats fail
+  const githubSection = stats ?
+    `╭───『 📊 *𝔾𝕀𝕋ℍ𝕌𝔹 𝕊𝕋𝔸𝕋𝕊* 』───╮
+│ ⭐ *Stars:* ${stats.stars}
+│ 🍴 *Forks:* ${stats.forks}
+│ 🐞 *Issues:* ${stats.issues}
+│ 📅 *Created:* ${stats.createdAt}
+│ 🔄 *Updated:* ${stats.updatedAt}
+╰──────────────────────────────╯` : "";
 
-━━━━━━━━━━━━━━━━━━━━
-
-╭───『 ⚙️ *SETTINGS* 』───╮
-│ ⚙️ ➾ *!settings* - View all settings
-│ ⚙️ ➾ *!alwaysonline* on/off
-│ ⚙️ ➾ *!autolikestatus* on/off
-│ ⚙️ ➾ *!autoviewstatus* on/off
-│ ⚙️ ➾ *!autoread* on/off
-│ ⚙️ ➾ *!antidelete* on/off
-│ ⚙️ ➾ *!anticall* on/off
-│ ⚙️ ➾ *!alwaystyping* on/off
-│ ⚙️ ➾ *!alwaysrecording* on/off
+  const caption = `╭───『 🤖 *𝕋𝔼ℝ𝕍𝕌𝕏 𝔹𝕆𝕋* 』───╮
+│
+│ ✨ *Prefix:* !
+│ 📅 *Date:* ${new Date().toLocaleDateString()}
+│ 👑 *Creator:* Nyaganya Malima
+│
 ╰──────────────────────────────╯
 
-╭───『 ⚡ *GENERAL* 』───╮
-│ 📊 ➾ *!botstats* - System status
-│ 📖 ➾ *!help* - Show this menu
-│ 🏓 ➾ *!ping* - Check latency
-│ 👤 ➾ *!owner* - Bot owner info
-│ 🚫 ➾ *!block* @user
-│ ✅ ➾ *!unblock* @user
-╰──────────────────────────────╯
+${githubSection}
 
-╭───『 🎮 *FUN* 』───╮
-│ 💕 ➾ *!ship* @user1 @user2
+╭───『 🎮 *𝔽𝕌ℕ ℤ𝕆ℕ𝔼* 』───╮
+│ 💘 ➾ *!ship* @user1 @user2
 │ ✨ ➾ *!fancy* <text>
 │ 😂 ➾ *!joke*
 │ 🧠 ➾ *!fact*
-│ 🎯 ➾ *!dare*
-│ 🔮 ➾ *!truth*
+│ 😇 ➾ *!truth*
+│ 😈 ➾ *!dare*
 ╰──────────────────────────────╯
 
-╭───『 👤 *STATUS* 』───╮
-│ 👁️ ➾ *!status*
+╭───『 ⚙️ *𝔾𝔼ℕ𝔼ℝ𝔸𝕃* 』───╮
+│ 🏓 ➾ *!ping*
+│ 📊 ➾ *!botstats*
+│ 👑 ➾ *!owner*
+│ 🚫 ➾ *!block* <@user>
+│ ✅ ➾ *!unblock* <number>
+│ ℹ️ ➾ *!help*
+╰──────────────────────────────╯
+
+╭───『 🎬 *𝕄𝔼𝔻𝕀𝔸* 』───╮
+│ 🎵 ➾ *!play* <song name>
+│ 📹 ➾ *!video* <video name>
+│ 🎬 ➾ *!movie* <movie name>
+│ ⚽ ➾ *!sport* <team name>
+│ 📰 ➾ *!news*
+╰──────────────────────────────╯
+
+╭───『 👤 *𝕊𝕋𝔸𝕋𝕌𝕊* 』───╮
+│ 🕵️ ➾ *!status* <@user/num>
 │ 📝 ➾ *!setbio* <text>
 │ ✏️ ➾ *!setname* <name>
 ╰──────────────────────────────╯
 
-╭───『 🎬 *MEDIA* 』───╮
-│ 🎬 ➾ *!movie* <name>
-│ 📰 ➾ *!news*
-│ 🎵 ➾ *!play* <song>
-│ ⚽ ➾ *!sport*
-│ 📹 ➾ *!video* <search>
-╰──────────────────────────────╯
-
-╭───『 🛠️ *TOOLS* 』───╮
+╭───『 🛠️ *𝕋𝕆𝕆𝕃𝕊* 』───╮
 │ 🔢 ➾ *!calc* <expression>
 │ 📱 ➾ *!qr* <text>
 │ 🌐 ➾ *!translate* <text>
 │ 🌤️ ➾ *!weather* <city>
 ╰──────────────────────────────╯
 
-   💠 _Powered by Tervux_
+╭───『 ⚙️ *𝕊𝔼𝕋𝕋𝕀ℕ𝔾𝕊* 』───╮
+│ 🔧 ➾ *!settings*
+│ 🌐 ➾ *!alwaysonline*
+│ ❤️ ➾ *!autolikestatus*
+│ 👀 ➾ *!autoviewstatus*
+│ 🛡️ ➾ *!antidelete*
+│ 📵 ➾ *!anticall*
+│ ✔️ ➾ *!autoread*
+╰──────────────────────────────╯
+
+💠 *ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝕓𝕪 𝕋𝔼ℝ𝕍𝕌𝕏 𝔹𝕠𝕥*
+🔗 github.com/JonniTech/Tervux-WhatsApp-Bot
 `;
 
-  if (logo) {
-    return { image: logo, caption, linkPreview: null };
+  if (logoBuffer) {
+    return { image: logoBuffer, caption, linkPreview: null };
   }
   return caption;
 };

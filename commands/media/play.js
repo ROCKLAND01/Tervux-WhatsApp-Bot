@@ -3,29 +3,48 @@ import axios from "axios";
 
 export const play = async (sock, m, args) => {
     const query = args.join(" ");
-    if (!query) return "💡 Usage: !play [song name]\nExample: !play Burna Boy Last Last";
+    if (!query) {
+        return `╔══════════════════════════════════╗
+║    🎵 *𝕋𝔼ℝ𝕍𝕌𝕏 𝕄𝕌𝕊𝕀ℂ* 🎵           ║
+╚══════════════════════════════════╝
+
+📝 *𝕌𝕤𝕒𝕘𝕖:* !play [song name]
+📌 *𝔼𝕩𝕒𝕞𝕡𝕝𝕖:* !play Burna Boy Last Last
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Download any song instantly! 🎧`;
+    }
 
     try {
         const search = await yts(query);
         const video = search.videos[0];
 
-        if (!video) return "❌ Song not found.";
+        if (!video) {
+            return `╔══════════════════════════════════╗
+║       ❌ *ℕ𝕆𝕋 𝔽𝕆𝕌ℕ𝔻* ❌          ║
+╚══════════════════════════════════╝
 
-        const message = `
-🎵 *PLAYING MUSIC*
-━━━━━━━━━━━━━━━━━━━━
-📌 *Title:* ${video.title}
-⏱️ *Duration:* ${video.timestamp}
-👀 *Views:* ${video.views}
-🔗 *Link:* ${video.url}
-━━━━━━━━━━━━━━━━━━━━
-_Downloading audio... please wait._
-        `;
+Song not found.
+Try a different search term.`;
+        }
 
-        const thinLine = "─── · 。ﾟ☆: *.☽ .* :☆ﾟ. ───";
-        const footerText = `\n\n${thinLine}\n   💠 *Powered by Tervux Company*\n   🔗 https://tervux.vercel.app`;
+        const message = `╔══════════════════════════════════╗
+║      🎵 *ℙ𝕃𝔸𝕐𝕀ℕ𝔾 𝕄𝕌𝕊𝕀ℂ* 🎵        ║
+╚══════════════════════════════════╝
 
-        // SAFE MEDIA DELIVERY: Download thumbnail ourselves to prevent Baileys/Undici fetch crashes
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 *𝕋ℝ𝔸ℂ𝕂 𝕀ℕ𝔽𝕆*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📌 *𝕋𝕚𝕥𝕝𝕖:* ${video.title}
+⏱️ *𝔻𝕦𝕣𝕒𝕥𝕚𝕠𝕟:* ${video.timestamp}
+👀 *𝕍𝕚𝕖𝕨𝕤:* ${video.views}
+🔗 *𝕃𝕚𝕟𝕜:* ${video.url}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+_Downloading audio... please wait._ ⏳`;
+
+        // SAFE MEDIA DELIVERY
         let thumbnailBuffer;
         try {
             const thumbRes = await axios.get(video.thumbnail, { responseType: 'arraybuffer', timeout: 5000 });
@@ -36,7 +55,7 @@ _Downloading audio... please wait._
 
         const sentMsg = await sock.sendMessage(m.key.remoteJid, {
             ...(thumbnailBuffer ? { image: thumbnailBuffer } : { text: message }),
-            ...(thumbnailBuffer ? { caption: message + footerText } : {}),
+            ...(thumbnailBuffer ? { caption: message } : {}),
             linkPreview: null
         }, { quoted: m });
 
@@ -72,12 +91,22 @@ _Downloading audio... please wait._
         } catch (downloadErr) {
             console.error("Audio download failed:", downloadErr.message);
             await sock.sendMessage(m.key.remoteJid, {
-                text: "⚠️ *Download failed:* The song is too long or the server is busy.\n👇 Please use the link above to listen."
+                text: `╔══════════════════════════════════╗
+║        ❌ *𝔼ℝℝ𝕆ℝ* ❌             ║
+╚══════════════════════════════════╝
+
+⚠️ *Download failed:*
+The song is too long or server busy.
+👇 Please use the link above to listen.`
             }, { quoted: m });
         }
 
     } catch (err) {
         console.error("Play error:", err.message);
-        return "❌ Failed to process music request.";
+        return `╔══════════════════════════════════╗
+║         ❌ *𝔼ℝℝ𝕆ℝ* ❌            ║
+╚══════════════════════════════════╝
+
+Failed to process music request.`;
     }
 };

@@ -8,13 +8,26 @@ export const news = async (sock, m, args) => {
 
         if (!articles || articles.length === 0) throw new Error("No articles found");
 
-        let message = `📰 *LATEST WORLD NEWS*\n━━━━━━━━━━━━━━━━━━━━\n\n`;
+        let message = `╔══════════════════════════════════╗
+║      📰 *𝕋𝔼ℝ𝕍𝕌𝕏 ℕ𝔼𝕎𝕊* 📰         ║
+╚══════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌍 *𝕋𝕆ℙ ℍ𝔼𝔸𝔻𝕃𝕀ℕ𝔼𝕊*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+`;
 
         articles.slice(0, 5).forEach((item, i) => {
-            message += `${i + 1}. *${item.title}*\n🔗 _${item.source.name}_\n\n`;
+            message += `${["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"][i]} *${item.title}*
+   📍 _${item.source.name}_
+
+`;
         });
 
-        message += `━━━━━━━━━━━━━━━━━━━━\n_Stay informed with Tervux News_`;
+        message += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+_Stay informed with Tervux Bot_ 🤖`;
+
         return {
             text: message,
             linkPreview: null
@@ -23,16 +36,21 @@ export const news = async (sock, m, args) => {
     } catch (err) {
         console.error("Primary news API failed:", err.message);
 
-        // Return a static fallback or try another source if available
-        // For now, robust fallback message
-        return `
-📰 *NEWS UNAVAILABLE*
-━━━━━━━━━━━━━━━━━━━━
-⚠️ Unable to fetch live headlines due to network issues.
-Please check:
-1. Google News: https://news.google.com
-2. BBC News: https://www.bbc.com/news
-━━━━━━━━━━━━━━━━━━━━
-        `;
+        return `╔══════════════════════════════════╗
+║    📰 *ℕ𝔼𝕎𝕊 𝕌ℕ𝔸𝕍𝔸𝕀𝕃𝔸𝔹𝕃𝔼* 📰      ║
+╚══════════════════════════════════╝
+
+⚠️ Unable to fetch live headlines.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔗 *𝕋ℝ𝕐 𝕋ℍ𝔼𝕊𝔼 𝕊𝕆𝕌ℝℂ𝔼𝕊:*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣ news.google.com
+2️⃣ bbc.com/news
+3️⃣ cnn.com
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+_Please try again later_ 🔄`;
     }
 };
