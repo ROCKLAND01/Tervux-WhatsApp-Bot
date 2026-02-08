@@ -1,306 +1,380 @@
 <div align="center">
 
-<img src="./public/tervus-logo.png" alt="Tervux Bot Logo" width="200" height="200" style="border-radius: 50%;">
-
-# Tervux WhatsApp Bot
-
-<!-- Animated Header via External Service (Safe for GitHub) -->
-<a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=25&pause=1000&color=25D366&center=true&vCenter=true&width=435&lines=Simple.+Powerful.+Secure.;Deploy+on+Railway+%7C+Render;Supports+Multi-Device+Login;Made+by+Nyaganya+Malima+Nyaganya+%F0%9F%9A%80" alt="Typing Animation" />
-</a>
-
-<p align="center">
-  <a href="https://github.com/JonniTech/Tervux-WhatsApp-Bot/stargazers"><img src="https://img.shields.io/github/stars/JonniTech/Tervux-WhatsApp-Bot?color=yellow&label=Stars&logo=github&style=for-the-badge" alt="Stars"/></a>
-  <a href="https://github.com/JonniTech/Tervux-WhatsApp-Bot/forks"><img src="https://img.shields.io/github/forks/JonniTech/Tervux-WhatsApp-Bot?color=blue&label=Forks&logo=github&style=for-the-badge" alt="Forks"/></a>
-  <a href="https://github.com/JonniTech/Tervux-WhatsApp-Bot/issues"><img src="https://img.shields.io/github/issues/JonniTech/Tervux-WhatsApp-Bot?color=red&label=Issues&logo=github&style=for-the-badge" alt="Issues"/></a>
-  <br>
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"/>
-  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js"/>
-  <img src="https://img.shields.io/badge/Baileys-Library-blue?style=for-the-badge" alt="Baileys"/>
-</p>
-
-<hr>
-
-<h2>🌍 Select Language / Chagua Lugha</h2>
-
-<!-- Simple Image Links for Language Selection -->
-<a href="#-english-instructions-">
-  <img src="https://img.shields.io/badge/English-Instructions-blue?style=for-the-badge&logo=google-translate&logoColor=white" alt="English"/>
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="#-maelekezo-ya-kiswahili-">
-  <img src="https://img.shields.io/badge/Kiswahili-Maelekezo-green?style=for-the-badge&logo=google-translate&logoColor=white" alt="Swahili"/>
-</a>
-
-</div>
+<img src="./public/tervus-logo.png" alt="Tervux Bot Logo" width="180" height="180" style="border-radius: 50%;">
 
 <br><br>
 
-<!-- ENGLISH SECTION -->
-<h1 id="-english-instructions-">🇺🇸 English Instructions</h1>
+<!-- Animated Header -->
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=32&pause=1000&color=25D366&center=true&vCenter=true&width=600&height=60&lines=TERVUX+WHATSAPP+BOT;Simple.+Powerful.+Secure.;Deploy+in+Minutes" alt="Typing Animation" />
+</a>
 
-## ✨ Introduction
+<br><br>
 
-**Tervux WhatsApp Bot** is a feature-rich, easy-to-deploy WhatsApp bot designed for everyone. Whether you want to manage groups, play games, download media, or use utility tools, Tervux Bot handles it all with style!
+<!-- Badges Row -->
+<p>
+  <a href="https://github.com/JonniTech/Tervux-WhatsApp-Bot/stargazers">
+    <img src="https://img.shields.io/github/stars/JonniTech/Tervux-WhatsApp-Bot?style=for-the-badge&logo=github&color=FFD700&labelColor=1a1a1b" alt="Stars"/>
+  </a>
+  <a href="https://github.com/JonniTech/Tervux-WhatsApp-Bot/forks">
+    <img src="https://img.shields.io/github/forks/JonniTech/Tervux-WhatsApp-Bot?style=for-the-badge&logo=github&color=00BFFF&labelColor=1a1a1b" alt="Forks"/>
+  </a>
+  <a href="https://github.com/JonniTech/Tervux-WhatsApp-Bot/issues">
+    <img src="https://img.shields.io/github/issues/JonniTech/Tervux-WhatsApp-Bot?style=for-the-badge&logo=github&color=FF4500&labelColor=1a1a1b" alt="Issues"/>
+  </a>
+</p>
 
-It is built on **Node.js** using the powerful **Baileys** library, ensuring stability and speed. Best of all, it's completely free to self-host!
+<!-- Tech Stack -->
+<p>
+  <img src="https://img.shields.io/badge/Node.js-20+-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js"/>
+  <img src="https://img.shields.io/badge/Baileys-Latest-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="Baileys"/>
+  <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License"/>
+</p>
 
 <br>
-<div align="center">
-  <!-- Use standard HTML img for local files, relative path -->
-  <img src="./public/welcome-message.jpeg" alt="Welcome Message" width="80%">
-  <p><i>The bot's friendly welcome message!</i></p>
+
+<!-- Language Selector -->
+<table>
+  <tr>
+    <td>
+      <a href="#-english-documentation">
+        <img src="https://img.shields.io/badge/ENGLISH-DOCUMENTATION-3399FF?style=for-the-badge&logo=googletranslate&logoColor=white" height="35">
+      </a>
+    </td>
+    <td>
+      <a href="#-swahili-maelekezo">
+        <img src="https://img.shields.io/badge/KISWAHILI-MAELEKEZO-25D366?style=for-the-badge&logo=googletranslate&logoColor=white" height="35">
+      </a>
+    </td>
+  </tr>
+</table>
+
 </div>
-<br>
-
-## 🚀 Features
-
-| Feature | Description | Icon |
-| :--- | :--- | :---: |
-| **Media Downloader** | Download YouTube Music & Videos, Instagram, TikTok without watermark. | 🎬 |
-| **Fun Games** | Truth or Dare, Ship, Fancy Text generator, Jokes, Facts. | 🎮 |
-| **Group Management** | Admin tools like Anti-Delete, Anti-Call, Auto-Read. | 🛡️ |
-| **Utility Tools** | Calculator, QR Code Generator, Translator, Weather. | 🛠️ |
-| **Always Online** | Keeps your presence online 24/7 (configurable). | 🟢 |
-| **Fancy Fonts** | All responses use premium Unicode fonts for a unique look. | 🎨 |
 
 <br>
+
+---
+
+<br>
+
 <div align="center">
-  <h3>📸 Screenshots</h3>
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&pause=1000&color=3399FF&center=true&vCenter=true&width=500&height=50&lines=ENGLISH+DOCUMENTATION" alt="English Section" id="-english-documentation">
+</div>
+
+<br>
+
+## <img src="https://img.shields.io/badge/-OVERVIEW-25D366?style=flat-square" height="25"> About Tervux Bot
+
+**Tervux WhatsApp Bot** is a feature-rich, self-hosted WhatsApp automation tool built on **Node.js** and the **Baileys** library. It provides media downloading, group management, fun games, and utility tools — all with a premium user experience.
+
+<br>
+
+<div align="center">
+  <img src="./public/welcome-message.jpeg" alt="Welcome Message" width="85%">
+  <br><br>
+</div>
+
+<br>
+
+## <img src="https://img.shields.io/badge/-FEATURES-FFD700?style=flat-square" height="25"> Core Features
+
+| Category | Feature | Description |
+|:---:|:---|:---|
+| <img src="https://img.shields.io/badge/-Media-FF4500?style=flat-square" height="20"> | **Downloader** | YouTube, TikTok, Instagram media downloads |
+| <img src="https://img.shields.io/badge/-Fun-A020F0?style=flat-square" height="20"> | **Games** | Truth/Dare, Ship Calculator, Fancy Text |
+| <img src="https://img.shields.io/badge/-Security-25D366?style=flat-square" height="20"> | **Protection** | Anti-Delete, Anti-Call, Auto-Read |
+| <img src="https://img.shields.io/badge/-Tools-00BFFF?style=flat-square" height="20"> | **Utilities** | Weather, QR Generator, Translator, Calculator |
+| <img src="https://img.shields.io/badge/-Status-FFD700?style=flat-square" height="20"> | **Presence** | Always Online, Auto-View Status, Auto-Like |
+
+<br>
+
+<div align="center">
   <table>
     <tr>
       <td align="center">
-        <img src="./public/help-menu-start.jpeg" alt="Help Menu Start" width="300">
-        <br><b>Help Menu Header</b>
+        <img src="./public/help-menu-start.jpeg" alt="Help Menu" width="280">
+        <br><b>Command Menu</b>
       </td>
       <td align="center">
-        <img src="./public/help-menu-end.jpeg" alt="Help Menu End" width="300">
-        <br><b>Help Menu Footer</b>
+        <img src="./public/help-menu-end.jpeg" alt="Help Footer" width="280">
+        <br><b>Menu Footer</b>
       </td>
     </tr>
   </table>
 </div>
+
 <br>
 
 ---
 
-## 🛠️ Requirements
+<br>
 
-Before you start, make sure you have:
-1.  **A GitHub Account** (to fork the repo).
-2.  **WhatsApp App** on your phone (linked to the number you want to use as a bot).
-3.  **Accounts** on Render or Railway (if deploying to cloud).
+## <img src="https://img.shields.io/badge/-REQUIREMENTS-FF4500?style=flat-square" height="25"> Before You Start
 
----
-
-## 📲 Deployment Guide
-
-Follow these simple steps to get your bot running in minutes!
-
-### Step 1: Fork the Repository 🍴
-Click the **Fork** button at the top right of this page to create your own copy of the code.
+| Requirement | Details |
+|:---|:---|
+| <img src="https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github" height="20"> | A GitHub account to fork the repository |
+| <img src="https://img.shields.io/badge/-WhatsApp-25D366?style=flat-square&logo=whatsapp&logoColor=white" height="20"> | A phone number with WhatsApp installed |
+| <img src="https://img.shields.io/badge/-Platform-3399FF?style=flat-square" height="20"> | Railway, Render, or a local PC/VPS for hosting |
 
 <br>
 
-### Step 2: Choose Your Platform ☁️
+---
 
-#### Option A: Deploy on Railway 🚂
-Railway offers great uptime and speed.
+<br>
+
+<div align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&pause=1000&color=25D366&center=true&vCenter=true&width=500&height=50&lines=DEPLOYMENT+GUIDE" alt="Deployment Section">
+</div>
+
+<br>
+
+## <img src="https://img.shields.io/badge/-STEP%201-3399FF?style=flat-square" height="25"> Fork the Repository
+
+Click the **Fork** button at the top-right of this page to create your own copy of the code.
+
+<br>
+
+---
+
+<br>
+
+## <img src="https://img.shields.io/badge/-STEP%202-A020F0?style=flat-square" height="25"> Choose a Platform
+
+<br>
+
+### <img src="https://img.shields.io/badge/-Railway-0B0D0E?style=flat-square&logo=railway&logoColor=white" height="22"> Option A: Deploy on Railway
 
 <a href="https://railway.app/new">
-<img src="https://railway.app/button.svg" alt="Deploy on Railway">
+  <img src="https://railway.app/button.svg" alt="Deploy on Railway" height="40">
 </a>
 
-1.  Create an account on [Railway.app](https://railway.app/).
-2.  Click **New Project** > **Deploy from GitHub repo**.
-3.  Select your forked repo `Tervux-WhatsApp-Bot`.
-4.  Go to **Settings** > **Variables** and add `PHONE` (optional).
-5.  Wait for deployment. Go to the **Deployments** tab and view logs to scan the QR code.
+1. Create an account at [railway.app](https://railway.app/)
+2. Click **New Project** and select **Deploy from GitHub repo**
+3. Choose your forked `Tervux-WhatsApp-Bot` repository
+4. Go to **Settings** and add environment variables (see Authentication section below)
+5. Deploy and check **Logs** for connection instructions
 
-#### Option B: Deploy on Render ☁️
-Render is a solid alternative for hosting.
+<br>
+
+### <img src="https://img.shields.io/badge/-Render-46E3B7?style=flat-square&logo=render&logoColor=white" height="22"> Option B: Deploy on Render
 
 <a href="https://render.com/deploy">
-<img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render">
+  <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render" height="40">
 </a>
 
-1.  Create an account on [Render.com](https://render.com/).
-2.  Click **New +** > **Web Service**.
-3.  Connect your GitHub and select the repo.
-4.  **Important Configuration:**
-    *   **Build Command:** `npm install`
-    *   **Start Command:** `npm start`
-    *   **Environment Variables:** Go to the "Environment" tab and add a key `PHONE` with your number (e.g., `255712345678`) to use Pairing Code.
-5.  Click **Create Web Service**.
-6.  Once live, check the **Logs** tab to scan the QR code.
+1. Create an account at [render.com](https://render.com/)
+2. Click **New +** and select **Web Service**
+3. Connect GitHub and select your forked repository
+4. Configure:
+   - **Build Command:** `npm install`
+   - **Start Command:** `npm start`
+5. Add environment variables in the **Environment** tab
+6. Deploy and check **Logs** for connection instructions
 
-#### Option C: Local Installation 💻
-Run the bot on your own computer (PC/Termux).
+<br>
+
+### <img src="https://img.shields.io/badge/-Local-FF4500?style=flat-square&logo=gnubash&logoColor=white" height="22"> Option C: Local / Termux Installation
 
 ```bash
-# 1. Clone the repository
+# Clone the repository
 git clone https://github.com/JonniTech/Tervux-WhatsApp-Bot.git
 
-# 2. Enter the directory
+# Navigate to directory
 cd Tervux-WhatsApp-Bot
 
-# 3. Install dependencies (Node.js 20+)
+# Install dependencies (requires Node.js 20+)
 npm install
 
-# 4. Start the bot
-npm start
-``` 
-
----
-
-## ❓ FAQ
-
-**Q: Where do I find the QR Code?**
-A: Check the **Logs** (or Terminal) of your deployment platform immediately after starting the bot.
-
-**Q: The session file expired?**
-A: If the `auth_info` folder is deleted or corrupted, restart the bot to generate a new QR code.
-
-**Q: How do I become the owner?**
-A: The bot automatically recognizes the number that scans the QR code as the owner. Additional owners can be configured in `config.json`.
-
----
-
-<br><br><br>
-
-<!-- SWAHILI SECTION -->
-<h1 id="-maelekezo-ya-kiswahili-">🇹🇿 Maelekezo ya Kiswahili</h1>
-
-## ✨ Utangulizi
-
-**Tervux WhatsApp Bot** ni bot ya WhatsApp yenye nguvu na rahisi kutumia, iliyotengenezwa kwa ajili ya kila mtu. Iwe unataka kusimamia magroup, kucheza games, kupakua nyimbo na video, au kutumia zana mbalimbali, Tervux Bot inafanya yote haya kwa urahisi na mvuto!
-
-Imetengenezwa kwa kutumia **Node.js** na library ya **Baileys**, ikihakikisha ufanisi na kasi. Na kizuri zaidi, ni **bure kabisa** kutumia!
-
-<br>
-<div align="center">
-  <img src="./public/welcome-message.jpeg" alt="Ujumbe wa Karibu" width="80%">
-  <p><i>Ujumbe wa kukaribisha wa bot!</i></p>
-</div>
-<br>
-
-## 🚀 Vipengele
-
-| Kipengele | Maelezo | Ikoni |
-| :--- | :--- | :---: |
-| **Media Downloader** | Pakua miziki na video kutoka YouTube, Instagram, TikTok bila watermark. | 🎬 |
-| **Games za Kuburudisha** | Truth or Dare, Ship (Upendo), Fancy Text, Vichekesho, Ukweli. | 🎮 |
-| **Usimamizi wa Group** | Zana za Admin kama Anti-Delete, Anti-Call, Auto-Read. | 🛡️ |
-| **Zana Mbalimbali** | Calculator, Kutengeneza QR Code, Translator (Mkalimani), Hali ya Hewa. | 🛠️ |
-| **Always Online** | Inaweka status yako kuwa 'Online' muda wote (inawezekana kuzima). | 🟢 |
-| **Mwandiko wa Mapambo** | Majibu yote yanatumia fonti nzuri za Unicode kupendezesha chat. | 🎨 |
-
-<br>
-<div align="center">
-  <h3>📸 Picha za Skrini</h3>
-  <table>
-    <tr>
-      <td align="center">
-        <img src="./public/help-menu-start.jpeg" alt="Menyu ya Msaada Mwanzo" width="300">
-        <br><b>Kichwa cha Menyu</b>
-      </td>
-      <td align="center">
-        <img src="./public/help-menu-end.jpeg" alt="Menyu ya Msaada Mwisho" width="300">
-        <br><b>Mwisho wa Menyu</b>
-      </td>
-    </tr>
-  </table>
-</div>
-<br>
-
----
-
-## 🛠️ Mahitaji
-
-Kabla ya kuanza, hakikisha una vitu hivi:
-1.  **Akaunti ya GitHub** (ili kufanya 'Fork' project hii).
-2.  **WhatsApp** kwenye simu yako (namba ambayo unataka iwe bot).
-3.  **Akaunti** kwenye Render au Railway (kama unataka kuweka mtandaoni).
-
----
-
-## 📲 Jinsi ya Ku-Deploy (Kuweka Hewani)
-
-Fuata hatua hizi rahisi ili kuwasha bot yako ndani ya dakika chache!
-
-### Hatua ya 1: Fork Repository 🍴
-Bonyeza kitufe cha **Fork** juu kulia mwa ukurasa huu ili kutengeneza nakala yako ya code hizi.
-
-<br>
-
-### Hatua ya 2: Chagua Platform Yako ☁️
-
-#### Chaguo A: Deploy kwenye Railway 🚂
-Railway ni chaguo zuri kwa sababu inakaa hewani muda mrefu bila kuzima.
-
-<a href="https://railway.app/new">
-<img src="https://railway.app/button.svg" alt="Deploy on Railway">
-</a>
-
-1.  Tengeneza akaunti [Railway.app](https://railway.app/).
-2.  Bonyeza **New Project** > **Deploy from GitHub repo**.
-3.  Chagua repo uliyofanya fork `Tervux-WhatsApp-Bot`.
-4.  Nenda kwenye **Settings** > **Variables** na ongeza `PHONE` (kama unataka).
-5.  Subiri imalize. Nenda kwenye tab ya **Deployments** na angalia logs ili ku-scan QR.
-
-#### Chaguo B: Deploy kwenye Render ☁️
-Render ni mbadala mzuri wa Heroku.
-
-<a href="https://render.com/deploy">
-<img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render">
-</a>
-
-1.  Tengeneza akaunti [Render.com](https://render.com/).
-2.  Bonyeza **New +** > **Web Service**.
-3.  Unganisha GitHub yako na chagua repo hii.
-4.  **Muhimu:**
-    *   **Build Command:** `npm install`
-    *   **Start Command:** `npm start`
-5.  Bonyeza **Create Web Service**.
-6.  Ikikamilika, angalia tab ya **Logs** ili kuona QR code na ku-scan.
-
-#### Chaguo C: Kuweka kwenye PC/Termux 💻
-Unaweza kuwasha bot kwenye kompyuta yako au kutumia Termux.
-
-```bash
-# 1. Clone repository hii
-git clone https://github.com/JonniTech/Tervux-WhatsApp-Bot.git
-
-# 2. Ingia ndani ya folda
-cd Tervux-WhatsApp-Bot
-
-# 3. Install dependencies (mahitaji)
-npm install
-
-# 4. Washa bot
+# Start the bot
 npm start
 ```
 
----
-
-## ❓ Maswali Yanayoulizwa Sana (FAQ)
-
-**Swali: QR Code nitaipata wapi?**
-Jibu: Angalia sehemu ya **Logs** (au Terminal) kwenye platform uliyotumia mara tu baada ya kuwasha bot.
-
-**Swali: Session ime-expire?**
-Jibu: Futa folda ya `auth_info` kama ipo, kisha washa bot upya (Restart) ili kupata QR code mpya.
-
-**Swali: Je, nani anakuwa mmiliki (Owner)?**
-Jibu: Namba inayotumika ku-scan QR code inatambulika kiotomatiki kama Owner. Unaweza kuongeza namba zingine kwenye `config.json`.
+<br>
 
 ---
+
+<br>
 
 <div align="center">
-  <p>Made with ❤️ by <b>Nyaganya Malima Nyaganya</b></p>
-  <img src="https://media.giphy.com/media/L1R1TVThF8Ul39Z7X6/giphy.gif" width="100" height="auto">
-  <br>
-  <a href="https://github.com/JonniTech/Tervux-WhatsApp-Bot">
-    <img src="https://img.shields.io/badge/GITHUB-PROFILE-black?style=for-the-badge&logo=github&logoColor=white" height="40" />
-  </a>
+  <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&pause=1000&color=FFD700&center=true&vCenter=true&width=600&height=50&lines=AUTHENTICATION+METHODS" alt="Auth Section">
+</div>
+
+<br>
+
+## <img src="https://img.shields.io/badge/-METHOD%20A-25D366?style=flat-square" height="25"> Pairing Code (Recommended)
+
+The **Pairing Code** method is cleaner and works better on cloud platforms where QR codes may not render properly.
+
+| Step | Action |
+|:---:|:---|
+| 1 | Set the `PHONE` environment variable with your number (include country code, e.g., `255712345678`) |
+| 2 | Deploy or restart the bot |
+| 3 | Check the **Logs** — you will see a message like: `PAIRING CODE: ABCD-EFGH` |
+| 4 | Open WhatsApp on your phone |
+| 5 | Go to **Linked Devices** and tap **Link a Device** |
+| 6 | Tap **Link with phone number instead** |
+| 7 | Enter the pairing code from the logs |
+| 8 | Done! The bot is now connected |
+
+<br>
+
+## <img src="https://img.shields.io/badge/-METHOD%20B-3399FF?style=flat-square" height="25"> QR Code Scanning
+
+If you **do not** set the `PHONE` variable, a QR code will be displayed in the logs.
+
+| Step | Action |
+|:---:|:---|
+| 1 | Deploy the bot without setting `PHONE` |
+| 2 | Check the **Logs** — a QR code will be printed |
+| 3 | Open WhatsApp on your phone |
+| 4 | Go to **Linked Devices** and tap **Link a Device** |
+| 5 | Scan the QR code from the logs |
+| 6 | Done! The bot is now connected |
+
+> **Note:** On some platforms, the QR code may appear broken or too large. In that case, use the Pairing Code method instead.
+
+<br>
+
+---
+
+<br>
+
+## <img src="https://img.shields.io/badge/-ENV%20VARIABLES-FF4500?style=flat-square" height="25"> Environment Configuration
+
+| Variable | Required | Description |
+|:---|:---:|:---|
+| `PHONE` | Optional | Your phone number with country code (enables Pairing Code) |
+| `OWNER_NUMBER` | Optional | Additional owner number for command access |
+| `PREFIX` | Optional | Command prefix (default: `!`) |
+
+<br>
+
+---
+
+<br>
+
+## <img src="https://img.shields.io/badge/-FAQ-A020F0?style=flat-square" height="25"> Frequently Asked Questions
+
+**Q: Where do I find the QR Code or Pairing Code?**
+> Check the **Logs** tab on Railway/Render, or your terminal if running locally.
+
+**Q: The session expired. What do I do?**
+> Delete the `auth_info` folder and restart the bot. A new QR/Pairing code will be generated.
+
+**Q: Who can use commands?**
+> Only the phone number that linked the bot (the owner) can execute commands.
+
+<br>
+
+---
+
+<br>
+
+<div align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&pause=1000&color=25D366&center=true&vCenter=true&width=500&height=50&lines=SWAHILI+MAELEKEZO" alt="Swahili Section" id="-swahili-maelekezo">
+</div>
+
+<br>
+
+## <img src="https://img.shields.io/badge/-UTANGULIZI-25D366?style=flat-square" height="25"> Kuhusu Tervux Bot
+
+**Tervux WhatsApp Bot** ni bot ya WhatsApp yenye vipengele vingi, iliyotengenezwa kwa **Node.js** na **Baileys**. Inakupa uwezo wa kupakua media, kusimamia makundi, kucheza games, na kutumia zana mbalimbali.
+
+<br>
+
+## <img src="https://img.shields.io/badge/-MAHITAJI-FF4500?style=flat-square" height="25"> Kabla ya Kuanza
+
+| Mahitaji | Maelezo |
+|:---|:---|
+| <img src="https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github" height="20"> | Akaunti ya GitHub kwa Fork |
+| <img src="https://img.shields.io/badge/-WhatsApp-25D366?style=flat-square&logo=whatsapp&logoColor=white" height="20"> | Namba ya simu yenye WhatsApp |
+| <img src="https://img.shields.io/badge/-Platform-3399FF?style=flat-square" height="20"> | Railway, Render, au kompyuta yako |
+
+<br>
+
+---
+
+<br>
+
+## <img src="https://img.shields.io/badge/-HATUA%201-3399FF?style=flat-square" height="25"> Fork Repository
+
+Bonyeza kitufe cha **Fork** juu kulia ili kutengeneza nakala yako.
+
+<br>
+
+## <img src="https://img.shields.io/badge/-HATUA%202-A020F0?style=flat-square" height="25"> Chagua Platform
+
+### <img src="https://img.shields.io/badge/-Railway-0B0D0E?style=flat-square&logo=railway&logoColor=white" height="20"> Railway
+
+1. Tengeneza akaunti kwenye [railway.app](https://railway.app/)
+2. Bonyeza **New Project** na uchague repo yako
+3. Weka environment variables (angalia sehemu ya Authentication)
+4. Deploy na angalia **Logs**
+
+### <img src="https://img.shields.io/badge/-Render-46E3B7?style=flat-square&logo=render&logoColor=white" height="20"> Render
+
+1. Tengeneza akaunti kwenye [render.com](https://render.com/)
+2. Bonyeza **New +** na uchague **Web Service**
+3. Unganisha GitHub na uchague repo yako
+4. Weka: Build = `npm install`, Start = `npm start`
+5. Weka environment variables na Deploy
+
+### <img src="https://img.shields.io/badge/-Termux-FF4500?style=flat-square&logo=gnubash&logoColor=white" height="20"> Termux / PC
+
+```bash
+git clone https://github.com/JonniTech/Tervux-WhatsApp-Bot.git
+cd Tervux-WhatsApp-Bot
+npm install
+npm start
+```
+
+<br>
+
+---
+
+<br>
+
+## <img src="https://img.shields.io/badge/-NJIA%20A-25D366?style=flat-square" height="25"> Pairing Code (Inashauriwa)
+
+| Hatua | Tendo |
+|:---:|:---|
+| 1 | Weka `PHONE` variable na namba yako (pamoja na code ya nchi, mfano: `255712345678`) |
+| 2 | Deploy au restart bot |
+| 3 | Angalia **Logs** — utaona: `PAIRING CODE: ABCD-EFGH` |
+| 4 | Fungua WhatsApp kwenye simu yako |
+| 5 | Nenda **Linked Devices** na bonyeza **Link a Device** |
+| 6 | Bonyeza **Link with phone number instead** |
+| 7 | Ingiza pairing code kutoka logs |
+
+<br>
+
+## <img src="https://img.shields.io/badge/-NJIA%20B-3399FF?style=flat-square" height="25"> QR Code
+
+| Hatua | Tendo |
+|:---:|:---|
+| 1 | Deploy bot bila kuweka `PHONE` variable |
+| 2 | Angalia **Logs** — QR code itaonyeshwa |
+| 3 | Fungua WhatsApp na scan QR code |
+
+<br>
+
+---
+
+<br>
+
+<div align="center">
+
+<img src="https://media.giphy.com/media/L1R1TVThF8Ul39Z7X6/giphy.gif" width="80">
+
+<br><br>
+
+<img src="https://img.shields.io/badge/Created%20by-Nyaganya%20Malima%20Nyaganya-25D366?style=for-the-badge" alt="Developer">
+
+<br><br>
+
+<a href="https://github.com/JonniTech/Tervux-WhatsApp-Bot">
+  <img src="https://img.shields.io/badge/GITHUB-REPOSITORY-181717?style=for-the-badge&logo=github&logoColor=white" height="35">
+</a>
+
 </div>

@@ -502,32 +502,33 @@ ${text}
 
             if (!m.key.fromMe && senderJid !== botJid) {
                 const accessDeniedMsg = `╔══════════════════════════════════╗
-║      🚫 *ACCESS DENIED* 🚫       ║
-╠══════════════════════════════════╣
-║   _This bot is owner-only_   ║
+║  🚫 *𝔸ℂℂ𝔼𝕊𝕊 𝔻𝔼ℕ𝕀𝔼𝔻* 🚫  ║
 ╚══════════════════════════════════╝
 
-⚠️ *Hey there!*
-This is a private Tervux Bot instance.
-Only the owner can execute commands.
+⚠️ *𝕆𝕠𝕡𝕤!* This is a private Tervux Bot instance.
+Only the owner can execute commands here.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✨ *WANT YOUR OWN BOT?*
+✨ *𝔾𝔼𝕋 𝕐𝕆𝕌ℝ 𝕆𝕎ℕ 𝔹𝕆𝕋 (𝔽ℝ𝔼𝔼!)*
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📌 *It's 100% FREE to deploy!*
+Deploy your own Tervux Bot in minutes!
 
-📋 *Simple Steps:*
-1️⃣ Fork the repository on GitHub
-2️⃣ Deploy to your server or Railway/Render
-3️⃣ Scan QR code with your WhatsApp
-4️⃣ Enjoy your personal bot! 🎉
+📋 *𝕊𝕚𝕞𝕡𝕝𝕖 𝕊𝕥𝕖𝕡𝕤:*
+• *Step 1:* Go to GitHub and Fork the repo
+• *Step 2:* Deploy to Railway or Render (free)
+• *Step 3:* Set your PHONE number as env variable
+• *Step 4:* Enter Pairing Code on WhatsApp
+• *Step 5:* Done! Your bot is live 🎉
 
-🔗 *Get the code here:*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔗 *ℝ𝕖𝕡𝕠𝕤𝕚𝕥𝕠𝕣𝕪:*
 github.com/JonniTech/Tervux-WhatsApp-Bot
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   💠 *Powered by Tervux Bot* 💠`;
+
+╔══════════════════════════════════╗
+║    💠 *ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝕓𝕪 𝕋𝔼ℝ𝕍𝕌𝕏* 💠    ║
+╚══════════════════════════════════╝`;
 
                 await sock.sendMessage(m.key.remoteJid, {
                     text: accessDeniedMsg
