@@ -48,13 +48,11 @@ export async function createWhatsAppClient() {
         auth: state,
         browser: Browsers.ubuntu("Chrome"),
         syncFullHistory: false,
-        shouldSyncHistoryMessage: () => false,
-        connectTimeoutMs: 180000, // 3 minutes for slow networks
         defaultQueryTimeoutMs: 180000,
         keepAliveIntervalMs: 25000,
         retryRequestDelayMs: 3000,
         qrTimeout: 60000,
-        markOnlineOnConnect: true,
+        markOnlineOnConnect: false, // Avoid ban risk/session issues
         generateHighQualityLinkPreview: false,
         getMessage: async (key) => {
             const msg = messageCache.get(key.id);
@@ -63,7 +61,7 @@ export async function createWhatsAppClient() {
     });
 
     sock.ev.on("creds.update", async () => {
-        console.log(`💾 Credentials updated. Saving...`);
+        // console.log(`💾 Credentials updated. Saving...`); // Too spammy
         await saveCreds();
     });
 
@@ -115,14 +113,15 @@ export async function createWhatsAppClient() {
             console.log(`❌ Connection closed. Code: ${statusCode}, Error: ${errorMessage}`);
 
             if (isLoggedOut) {
-                console.log(`🔓 Logged out! Clearing session...`);
-                try {
-                    rmSync(AUTH_INFO_PATH, { recursive: true, force: true });
-                    mkdirSync(AUTH_INFO_PATH, { recursive: true });
-                } catch (e) {
-                    console.error("Failed to clear auth:", e);
-                }
-                console.log(`📱 Please restart the bot and scan QR code again.`);
+                console.log(`🔓 Logged out! Please check your connection.`);
+                // DISABLED AUTO-DELETE to prevent accidental data loss on false positives
+                // try {
+                //     rmSync(AUTH_INFO_PATH, { recursive: true, force: true });
+                //     mkdirSync(AUTH_INFO_PATH, { recursive: true });
+                // } catch (e) {
+                //     console.error("Failed to clear auth:", e);
+                // }
+                console.log(`📱 If this persists, manually delete the 'auth_info' folder and restart.`);
                 reconnectAttempts = MAX_RECONNECT_ATTEMPTS; // Stop reconnection
             } else if (isConflict) {
                 console.log(`⚠️ Session active on another device.`);

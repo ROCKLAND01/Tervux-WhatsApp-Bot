@@ -34,3 +34,16 @@ process.on("uncaughtException", (err) => {
         console.error("🚀 Keeping server alive despite critical error.");
     }
 });
+
+
+// Graceful Shutdown
+const shutdown = () => {
+    console.log("🛑 Server shutting down...");
+    // Give async file writes a moment to finish (e.g. session saving)
+    setTimeout(() => {
+        process.exit(0);
+    }, 500);
+};
+
+process.on("SIGINT", shutdown);
+process.on("SIGTERM", shutdown);

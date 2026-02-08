@@ -1,11 +1,11 @@
-
 /**
  * Helper: Get group metadata (cached if possible, but for now direct)
  */
 export async function getGroupMetadata(sock, groupJid) {
     try {
         return await sock.groupMetadata(groupJid);
-    } catch {
+    } catch (e) {
+        console.error("❌ Failed to get group metadata:", e.message);
         return null;
     }
 }
@@ -16,14 +16,33 @@ export async function getGroupMetadata(sock, groupJid) {
 export async function isAdmin(sock, groupJid, userJid) {
     try {
         const metadata = await getGroupMetadata(sock, groupJid);
-        if (!metadata) return false;
+        if (!metadata) {
+            console.log("❌ isAdmin: No metadata found for group", groupJid);
+            return false;
+        }
 
         const admins = metadata.participants
             .filter(p => p.admin === 'admin' || p.admin === 'superadmin')
             .map(p => p.id);
 
-        return admins.includes(userJid);
-    } catch {
+        // Exact match check
+        let isUserAdmin = admins.includes(userJid);
+
+        // Fuzzy match check (handle :12@s.whatsapp.net vs @s.whatsapp.net)
+        if (!isUserAdmin) {
+            const cleanUserJid = userJid.split(":")[0].split("@")[0];
+            const found = admins.find(a => a.startsWith(cleanUserJid));
+            if (found) {
+                console.log(`⚠️ isAdmin: JID mismatch but found fuzzy match. Input: ${userJid}, Found: ${found}`);
+                isUserAdmin = true;
+            } else {
+                // console.log(`ℹ️ isAdmin: User ${userJid} is NOT admin. Admins:`, admins); // Too noisy usually
+            }
+        }
+
+        return isUserAdmin;
+    } catch (e) {
+        console.error("❌ isAdmin Error:", e);
         return false;
     }
 }
@@ -33,10 +52,16 @@ export async function isAdmin(sock, groupJid, userJid) {
  */
 export async function isBotAdmin(sock, groupJid) {
     try {
-        const botJid = sock.user?.id?.split(":")[0] + "@s.whatsapp.net";
-        if (!botJid) return false;
+        // Handle different JID formats from sock.user
+        const rawId = sock.user?.id || "";
+        const botNumber = rawId.split(":")[0].split("@")[0];
+        const botJid = `${botNumber}@s.whatsapp.net`;
+
+        console.log(`🔍 Checking isBotAdmin: BotJID=${botJid}, Group=${groupJid}`);
+
         return await isAdmin(sock, groupJid, botJid);
-    } catch {
+    } catch (e) {
+        console.error("❌ isBotAdmin Error:", e);
         return false;
     }
 }
