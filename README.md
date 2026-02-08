@@ -158,21 +158,22 @@ Click the **Fork** button at the top-right of this page to create your own copy 
 ### <img src="https://img.shields.io/badge/-Railway-0B0D0E?style=flat-square&logo=railway&logoColor=white" height="22"> Option A: Deploy on Railway
 
 <a href="https://railway.app/new">
-  <img src="https://railway.app/button.svg" alt="Deploy on Railway" height="40">
+  <img src="https://img.shields.io/badge/DEPLOY%20ON%20RAILWAY-0B0D0E?style=for-the-badge&logo=railway&logoColor=white" alt="Deploy on Railway" height="40">
 </a>
 
 1. Create an account at [railway.app](https://railway.app/)
-2. Click **New Project** and select **Deploy from GitHub repo**
-3. Choose your forked `Tervux-WhatsApp-Bot` repository
-4. Go to **Settings** and add environment variables (see Authentication section below)
-5. Deploy and check **Logs** for connection instructions
+2. Connect your GitHub account when prompted
+3. Click **New Project** and select **Deploy from GitHub repo**
+4. Choose your forked `Tervux-WhatsApp-Bot` repository
+5. Go to **Settings** and add environment variables (see Authentication section below)
+6. Deploy and check **Logs** for connection instructions
 
 <br>
 
 ### <img src="https://img.shields.io/badge/-Render-46E3B7?style=flat-square&logo=render&logoColor=white" height="22"> Option B: Deploy on Render
 
 <a href="https://render.com/deploy">
-  <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render" height="40">
+  <img src="https://img.shields.io/badge/DEPLOY%20ON%20RENDER-46E3B7?style=for-the-badge&logo=render&logoColor=white" alt="Deploy to Render" height="40">
 </a>
 
 1. Create an account at [render.com](https://render.com/)
@@ -313,7 +314,7 @@ If you **do not** set the `PHONE` variable, a QR code will be displayed in the l
 
 ## <img src="https://img.shields.io/badge/-HATUA%201-3399FF?style=flat-square" height="25"> Fork Repository
 
-Bonyeza kitufe cha **Fork** juu kulia ili kutengeneza nakala yako.
+Bonyeza kitufe cha **Fork** juu kulia ili kutengeneza copy ya hii repo iwe yako.  
 
 <br>
 
@@ -321,12 +322,23 @@ Bonyeza kitufe cha **Fork** juu kulia ili kutengeneza nakala yako.
 
 ### <img src="https://img.shields.io/badge/-Railway-0B0D0E?style=flat-square&logo=railway&logoColor=white" height="20"> Railway
 
+<a href="https://railway.app/new">
+  <img src="https://img.shields.io/badge/DEPLOY%20ON%20RAILWAY-0B0D0E?style=for-the-badge&logo=railway&logoColor=white" alt="Deploy on Railway" height="40">
+</a>
+
 1. Tengeneza akaunti kwenye [railway.app](https://railway.app/)
-2. Bonyeza **New Project** na uchague repo yako
-3. Weka environment variables (angalia sehemu ya Authentication)
-4. Deploy na angalia **Logs**
+2. Unganisha akaunti yako ya GitHub ukiulizwa
+3. Bonyeza **New Project** na uchague repo yako
+4. Weka environment variables (angalia sehemu ya Authentication)
+5. Deploy na angalia **Logs**
+
+<br>
 
 ### <img src="https://img.shields.io/badge/-Render-46E3B7?style=flat-square&logo=render&logoColor=white" height="20"> Render
+
+<a href="https://render.com/deploy">
+  <img src="https://img.shields.io/badge/DEPLOY%20ON%20RENDER-46E3B7?style=for-the-badge&logo=render&logoColor=white" alt="Deploy to Render" height="40">
+</a>
 
 1. Tengeneza akaunti kwenye [render.com](https://render.com/)
 2. Bonyeza **New +** na uchague **Web Service**
