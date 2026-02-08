@@ -1,35 +1,55 @@
 <div align="center">
 
-<!-- HEADER LOGO -->
-<p align="center">
-  <img src="./public/tervus-logo.png" alt="Tervux Bot" width="180" style="border-radius: 50%; box-shadow: 0 0 30px rgba(37, 211, 102, 0.4); border: 4px solid #25D366;">
-</p>
+<!-- CIRCULAR LOGO WITH GLOW HACK -->
+<svg width="220" height="220" viewBox="0 0 220 220">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="logoPattern" x="10" y="10" width="200" height="200" patternUnits="userSpaceOnUse">
+      <image x="0" y="0" width="200" height="200" href="https://raw.githubusercontent.com/JonniTech/Tervux-WhatsApp-Bot/main/public/tervus-logo.png" />
+    </pattern>
+  </defs>
+  <!-- Glow effect circles -->
+  <circle cx="110" cy="110" r="105" fill="none" stroke="#25D366" stroke-width="4" opacity="0.3" filter="url(#glow)" />
+  <circle cx="110" cy="110" r="102" fill="none" stroke="#25D366" stroke-width="2" opacity="0.5" />
+  <!-- Main Circular Logo -->
+  <circle cx="110" cy="110" r="100" fill="url(#logoPattern)" stroke="#25D366" stroke-width="3" />
+</svg>
 
-<!-- TYPING ANIMATION -->
-<p align="center">
-  <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=32&pause=1000&color=25D366&center=true&vCenter=true&width=500&lines=TERVUX+WHATSAPP+BOT;Simple.+Smart.+Secure.;Deploy+in+Seconds!🚀" alt="Typing Animation" />
-  </a>
-</p>
+<br>
 
-<!-- STATS SHIELDS -->
+<!-- PRIMARY ANIMATED HEADER -->
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=800&size=36&pause=1000&color=25D366&background=111&center=true&vCenter=true&width=600&height=70&lines=TERVUX+WHATSAPP+BOT;SIMPLE+SMART+SECURE;DEPLOY+IN+SECONDS" alt="Animated Header" />
+</a>
+
 <p align="center">
   <img src="https://img.shields.io/github/stars/JonniTech/Tervux-WhatsApp-Bot?style=for-the-badge&logo=github&color=FFD700&labelColor=1a1a1b" alt="Stars" />
   <img src="https://img.shields.io/github/forks/JonniTech/Tervux-WhatsApp-Bot?style=for-the-badge&logo=github&color=00BFFF&labelColor=1a1a1b" alt="Forks" />
   <img src="https://img.shields.io/github/issues/JonniTech/Tervux-WhatsApp-Bot?style=for-the-badge&logo=github&color=FF4500&labelColor=1a1a1b" alt="Issues" />
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-18+-green?style=for-the-badge&logo=node.js&logoColor=white&labelColor=333" alt="Node" />
+  <img src="https://img.shields.io/badge/Baileys-Latest-blue?style=for-the-badge&logo=whatsapp&logoColor=white&labelColor=333" alt="Baileys" />
+</p>
+
 <!-- LANGUAGE SELECTOR -->
-<table align="center">
+<table align="center" border="0">
   <tr>
-    <td align="center">
-      <a href="#english-section">
-        <img src="https://img.shields.io/badge/ENGLISH-CLICK_HERE-blue?style=for-the-badge&logo=google-translate&logoColor=white" width="180">
+    <td>
+      <a href="#english-documentation">
+        <img src="https://img.shields.io/badge/DOCUMENTATION-ENGLISH-3399FF?style=for-the-badge&labelColor=222" height="35">
       </a>
     </td>
-    <td align="center">
-      <a href="#sehemu-ya-kiswahili">
-        <img src="https://img.shields.io/badge/KISWAHILI-BOFYA_HAPA-green?style=for-the-badge&logo=google-translate&logoColor=white" width="180">
+    <td>
+      <a href="#maelekezo-ya-kiswahili">
+        <img src="https://img.shields.io/badge/MAELEKEZO-KISWAHILI-25D366?style=for-the-badge&labelColor=222" height="35">
       </a>
     </td>
   </tr>
@@ -40,39 +60,39 @@
 ---
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=24&pause=1000&color=3399FF&center=true&vCenter=true&width=435&lines=English+Documentation" alt="English Header" id="english-section">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=28&pause=1000&color=3399FF&center=true&vCenter=true&width=500&height=50&lines=English+Documentation" alt="English Header" id="english-documentation">
 </div>
 
-## Introduction
+### Overview
 
-Tervux Bot is a high-performance WhatsApp assistant engineered for stability and ease of use. It allows users to automate tasks, download media content, and manage groups through a comprehensive set of commands. 
+Tervux Bot is a high-performance WhatsApp automation framework designed for industrial-grade stability. It provides a comprehensive suite of media retrieval, group orchestration, and security management tools.
 
-The project is built on Node.js using the Baileys library. It is designed to be lightweight and accessible for both technical and non-technical users.
+The system scales efficiently across various cloud environments and supports multi-device architecture for uninterrupted service.
 
 <br>
 <div align="center">
-  <img src="./public/welcome-message.jpeg" width="600" style="border-radius: 15px; border: 2px solid #25D366; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+  <img src="https://raw.githubusercontent.com/JonniTech/Tervux-WhatsApp-Bot/main/public/welcome-message.jpeg" width="650" style="border: 2px solid #25D366; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
 </div>
 <br>
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=24&pause=1000&color=FFD700&center=true&vCenter=true&width=435&lines=Key+Features" alt="Features Header">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=28&pause=1000&color=FFD700&center=true&vCenter=true&width=500&height=50&lines=Core+Capabilities" alt="Features Header">
 </div>
 
-| Feature | Description |
+| Capability | Specification |
 | :--- | :--- |
-| **Media Downloader** | Direct downloads from YouTube, TikTok, and Instagram without watermarks. |
-| **Fun Zone** | Truth or Dare, ship compatibility, and stylized text generation. |
-| **Security** | Advanced protection including Anti-Delete and Anti-Call features. |
-| **Utilities** | Real-time weather, currency translation, and QR code generation. |
-| **Always Online** | Optional 24/7 online presence and auto-viewing of status updates. |
+| **Media Engine** | High-speed retrieval of content from YouTube, TikTok, and Instagram. |
+| **Automation** | Context-aware responses and specialized text rendering modules. |
+| **Security Layer** | Integrated protection against message deletion and unsolicited calls. |
+| **Data Tools** | Real-time weather analytics, translation services, and QR generation. |
+| **Persistence** | Persistent online status and automated status stream monitoring. |
 
 <br>
 <div align="center">
   <table border="0">
     <tr>
-      <td><img src="./public/help-menu-start.jpeg" width="300" style="border-radius: 10px;"></td>
-      <td><img src="./public/help-menu-end.jpeg" width="300" style="border-radius: 10px;"></td>
+      <td><img src="https://raw.githubusercontent.com/JonniTech/Tervux-WhatsApp-Bot/main/public/help-menu-start.jpeg" width="320"></td>
+      <td><img src="https://raw.githubusercontent.com/JonniTech/Tervux-WhatsApp-Bot/main/public/help-menu-end.jpeg" width="320"></td>
     </tr>
   </table>
 </div>
@@ -81,41 +101,35 @@ The project is built on Node.js using the Baileys library. It is designed to be 
 ---
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=24&pause=1000&color=25D366&center=true&vCenter=true&width=435&lines=Deployment+Guide" alt="Deployment Header">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=28&pause=1000&color=25D366&center=true&vCenter=true&width=500&height=50&lines=Deployment+Protocols" alt="Deployment Header">
 </div>
 
-Follow these steps carefully to host your own bot for free.
+Technical instructions for successful system deployment.
 
-### Phase 1: Preparation
-1. **GitHub Account:** Ensure you are logged into your GitHub account.
-2. **Fork Project:** Click the "Fork" button at the top right of this repository. This creates a personal copy of the code in your account.
-3. **WhatsApp Number:** Identify the phone number you wish to use as the bot.
+#### Phase 1: Environment Setup
+1. **GitHub Synchronization:** Create a branch/fork of this repository to your local profile.
+2. **Identity Configuration:** Prepare the target WhatsApp number for authentication.
 
-### Phase 2: Cloud Hosting
-Choose one of the platforms below.
+#### Phase 2: Implementation
+Select the preferred execution environment.
 
-#### Method A: Railway (Recommended)
-1. Visit [Railway.app](https://railway.app) and create an account using GitHub.
-2. Select **New Project** and then **Deploy from GitHub repo**.
-3. Choose your forked repository: `Tervux-WhatsApp-Bot`.
-4. (Optional) Go to the **Variables** tab and add a new secret named `PHONE` with your number (including country code) to receive a pairing code.
-5. Click **Deploy**. Once the process is finished, go to the **Logs** tab to view your login QR code or Pairing Code.
+**Method A: Railway Orchestration**
+1. Access **Railway.app** and authorize via GitHub.
+2. Select **New Project** and choose the `Tervux-WhatsApp-Bot` repository.
+3. Establish Environment Variables: Add `PHONE` for Pairing Code authentication.
+4. Execute Deployment. Access the terminal logs to finalize the linking process.
 
-#### Method B: Render
-1. Visit [Render.com](https://render.com) and log in with GitHub.
-2. Select **New +** and click on **Web Service**.
-3. Connect the `Tervux-WhatsApp-Bot` repository.
-4. Set the following configuration:
-   - **Environment:** Node.js
-   - **Build Command:** `npm install`
-   - **Start Command:** `npm start`
-5. Click **Create Web Service**. Wait for the status to show "Live," then check the **Logs** to scan the QR code.
+**Method B: Render Web Service**
+1. Access **Render.com** and link your GitHub account.
+2. Initiate a new **Web Service** connecting to this project.
+3. Configure Runtime:
+   - **Command:** `npm install`
+   - **Start:** `npm start`
+4. Confirm creation. Monitor deployment logs for the authentication QR code.
 
-### Phase 3: Local Setup
-For power users or those using Termux/PC.
-
-1. Install [Node.js](https://nodejs.org) (Version 18 or higher).
-2. Open your terminal or CMD and run:
+**Method C: Local Infrastructure**
+1. Ensure Node.js Version 18 is installed.
+2. Execute the following sequence:
    ```bash
    git clone https://github.com/JonniTech/Tervux-WhatsApp-Bot.git
    cd Tervux-WhatsApp-Bot
@@ -126,117 +140,83 @@ For power users or those using Termux/PC.
 ---
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=24&pause=1000&color=FF5733&center=true&vCenter=true&width=435&lines=Frequently+Asked+Questions" alt="FAQ Header">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=28&pause=1000&color=FF5733&center=true&vCenter=true&width=500&height=50&lines=System+FAQ" alt="FAQ Header">
 </div>
 
-**1. Where is the QR Code?**
-The QR code is printed in the internal logs of your hosting service (Railway or Render) immediately after the build completes.
+**How is the authentication handled?**
+The system generates a time-sensitive QR code or alphanumeric Pairing Code within the deployment logs for secure account linkage.
 
-**2. How do I change settings?**
-You can use the `!settings` command in WhatsApp or modify the `config.json` file in your repository.
+**Can I modify the configuration post-deployment?**
+Adjustments can be applied via the `!settings` command directly in WhatsApp or by updating the `config.json` file.
 
-**3. What is a Pairing Code?**
-A pairing code allows you to link the bot without scanning a QR code. It requires setting the `PHONE` variable in your hosting platform.
+**Is multi-device supported?**
+Yes, the system utilizes the latest Baileys architecture for full multi-device compatibility.
 
 ---
 
 <br>
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=24&pause=1000&color=25D366&center=true&vCenter=true&width=435&lines=Maelekezo+ya+Kiswahili" alt="Swahili Header" id="sehemu-ya-kiswahili">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=28&pause=1000&color=25D366&center=true&vCenter=true&width=500&height=50&lines=Maelekezo+ya+Kiswahili" alt="Swahili Header" id="maelekezo-ya-kiswahili">
 </div>
 
-## Utangulizi
+### Utangulizi
 
-Tervux Bot ni msaidizi wa kisasa wa WhatsApp aliyetengenezwa kwa ajili ya kasi na wepesi wa kutumia. Inaruhusu watumiaji kufanya kazi kiotomatiki, kupakua maudhui, na kusimamia magroup kupitia amri mbalimbali.
+Tervux Bot ni mfumo wa kisasa wa WhatsApp ulioandaliwa kwa ajili ya usalama na ufanisi. Inatoa uwezo wa kupata media, kusimamia magroup, na kutoa ulinzi dhidi ya changamoto mbalimbali.
 
-Project hii imejengwa kwa kutumia Node.js na library ya Baileys. Imetengenezwa kuwa nyepesi na inayofaa kwa watumiaji wa kila aina, wawe na ufundi au wasio na ufundi.
+Mfumo huu umejengwa kwa Node.js na unaruhusu matumizi rahisi kwenye mitandao mbalimbali.
 
 <br>
 <div align="center">
-  <img src="./public/welcome-message.jpeg" width="600" style="border-radius: 15px; border: 2px solid #25D366; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+  <img src="https://raw.githubusercontent.com/JonniTech/Tervux-WhatsApp-Bot/main/public/welcome-message.jpeg" width="650">
 </div>
 <br>
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=24&pause=1000&color=FFD700&center=true&vCenter=true&width=435&lines=Vipengele+Vikuu" alt="Vipengele Header">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=28&pause=1000&color=FFD700&center=true&vCenter=true&width=500&height=50&lines=Uwezo+wa+Mfumo" alt="Uwezo Header">
 </div>
 
-| Kipengele | Maelezo |
+| Uwezo | Maelezo |
 | :--- | :--- |
-| **Download Media** | Pakua video na miziki kutoka YouTube, TikTok, na Instagram bila watermark. |
-| **Burudani** | Michezo ya Truth or Dare, vipimo vya upendo, na mwandiko wa mapambo. |
-| **Usalama** | Ulinzi wa hali ya juu ikiwemo Anti-Delete na kuzuia simu (Anti-Call). |
-| **Zana** | Hali ya hewa kwa nchi zote, kutengeneza QR code, na mkalimani wa lugha. |
-| **Online Muda Wote** | Uwezo wa kuonekana uko online saa 24 na kuangalia status za watu kiotomatiki. |
+| **Download Media** | Kupata maudhui kutoka YouTube, TikTok, na Instagram bila watermark. |
+| **Automation** | Majibu ya haraka na mwandiko wa mapambo kwa kila ujumbe. |
+| **Usalama** | Ulinzi dhidi ya kufutwa kwa ujumbe na kuzuia simu zisizohitajika. |
+| **Zana za Data** | Hali ya hewa mara moja, tafsiri ya lugha, na kutengeneza QR codes. |
+| **Uimara** | Uwezo wa kuonekana online muda wote bila kuzima. |
 
 ---
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=24&pause=1000&color=25D366&center=true&vCenter=true&width=435&lines=Hatua+za+Kuwasha+(Deploy)" alt="Maelekezo Header">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=28&pause=1000&color=25D366&center=true&vCenter=true&width=500&height=50&lines=Maelekezo+ya+Kuwasha" alt="Deployment Swahili Header">
 </div>
 
-Fuata hatua hizi kwa umakini ili kumiliki bot yako mwenyewe.
+#### Hatua ya 1: Maandalizi
+1. **GitHub:** Fungua nakala yako ya mfumo huu kwenye akaunti yako.
+2. **Namba:** Andaa namba ya WhatsApp unayotaka kuitumia kama bot.
 
-### Hatua ya 1: Matayarisho
-1. **Akaunti ya GitHub:** Hakikisha umeingia kwenye akaunti yako ya GitHub.
-2. **Fork Project:** Bonyeza kitufe cha "Fork" juu kulia mwa ukurasa huu. Hii itatengeneza nakala yako binafsi ya code hizi.
-3. **Namba ya WhatsApp:** Chagua namba unayotaka iwe bot.
+#### Hatua ya 2: Utekelezaji
 
-### Hatua ya 2: Kuweka Mtandaoni
-Chagua mmoja kati ya mitandao hapa chini.
+**Njia A: Railway**
+1. Fungua Railway.app na unganisha na GitHub.
+2. Chagua repository ya `Tervux-WhatsApp-Bot`.
+3. Weka namba yako kwenye variable ya `PHONE`.
+4. Washa mfumo na angalia logs kwa ajili ya kuunganisha.
 
-#### Njia A: Railway (Inashauriwa)
-1. Fungua [Railway.app](https://railway.app) na tengeneza akaunti ukitumia GitHub.
-2. Chagua **New Project** kisha bonyeza **Deploy from GitHub repo**.
-3. Chagua repository uliyofanya fork: `Tervux-WhatsApp-Bot`.
-4. (Hialo) Nenda kwenye sehemu ya **Variables** na ongeza jina la siri kama `PHONE` ukiweka namba yako ili kupata Pairing Code.
-5. Bonyeza **Deploy**. Baada ya muda, nenda kwenye tab ya **Logs** kuona QR code ya kuscan.
-
-#### Njia B: Render
-1. Fungua [Render.com](https://render.com) na ingia kwa kutumia GitHub.
-2. Chagua **New +** kisha bonyeza **Web Service**.
-3. Unganisha repository ya `Tervux-WhatsApp-Bot`.
-4. Weka mipangilio ifuatayo:
-   - **Runtime:** Node
-   - **Build Command:** `npm install`
-   - **Start Command:** `npm start`
-5. Bonyeza **Create Web Service**. Subiri ionyeshe "Live," kisha angalia **Logs** kuscan QR code.
-
-### Hatua ya 3: Kufunga Kwenye Kompyuta
-Kwa watumiaji wenye kompyuta au wanaotumia Termux.
-
-1. Weka [Node.js](https://nodejs.org) (Version 18 au zaidi).
-2. Fungua terminal yako na andika:
-   ```bash
-   git clone https://github.com/JonniTech/Tervux-WhatsApp-Bot.git
-   cd Tervux-WhatsApp-Bot
-   npm install
-   npm start
-   ```
+**Njia B: Render**
+1. Fungua Render.com na unganisha GitHub.
+2. Chagua Web Service kwa ajili ya project hii.
+3. Tumia amri hizi:
+   - **Build:** `npm install`
+   - **Start:** `npm start`
+4. Angalia logs pindi mfumo utakapokuwa "Live".
 
 ---
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=24&pause=1000&color=FF5733&center=true&vCenter=true&width=435&lines=Maswali+ya+Kila+Siku" alt="Maswali Header">
-</div>
-
-**1. QR Code nitapata wapi?**
-QR code inapatikana kwenye sehemu ya "Logs" ya mtandao uliotumia kuwasha bot yako mara tu baada ya kumaliza build.
-
-**2. Nawezaje kubadili mipangilio?**
-Tumia amri ya `!settings` ndani ya WhatsApp au badili file la `config.json` kwenye repository yako.
-
-**3. Pairing Code ni nini?**
-Ni namba unayotumia kuunganisha bot bila kuscan QR. Lazima uweke variable ya `PHONE` kwenye mtandao wako wa hosting.
-
----
-
-<div align="center">
-  <p>Made with Power by Nyaganya Malima Nyaganya</p>
+  <p>System Powered by Nyaganya Malima Nyaganya</p>
   <img src="https://media.giphy.com/media/L1R1TVThF8Ul39Z7X6/giphy.gif" width="100" height="auto">
   <br>
   <a href="https://github.com/JonniTech/Tervux-WhatsApp-Bot">
-    <img src="https://img.shields.io/badge/VISIT-GITHUB-black?style=for-the-badge&logo=github" />
+    <img src="https://img.shields.io/badge/DEVELOPER-GITHUB-black?style=for-the-badge&logo=github" />
   </a>
 </div>
